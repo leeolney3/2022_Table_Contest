@@ -1,0 +1,1772 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Lee Olney">
+<meta name="dcterms.date" content="2022-11-15">
+
+<title>Chocolate bar ratings</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="Chocolate_bar_ratings_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Chocolate_bar_ratings_files/libs/quarto-html/quarto.js"></script>
+<script src="Chocolate_bar_ratings_files/libs/quarto-html/popper.min.js"></script>
+<script src="Chocolate_bar_ratings_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Chocolate_bar_ratings_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Chocolate_bar_ratings_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Chocolate_bar_ratings_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Chocolate_bar_ratings_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Chocolate_bar_ratings_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Chocolate_bar_ratings_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Chocolate bar ratings</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Lee Olney </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 15, 2022</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+</header>
+
+<p>This Quarto document contains a table built in R using <a href="https://gt.rstudio.com/">{gt}</a> and <a href="https://jthomasmock.github.io/gtExtras/">{gtExtras}</a> packages for the <a href="https://www.rstudio.com/blog/rstudio-table-contest-2022/">R Studio 2022 Table Contest</a> submission. The table was created for <a href="https://github.com/rfordatascience/tidytuesday">#TidyTuesday</a> week 3 <a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-01-18/readme.md">Chocolate Bar ratings</a>, <a href="https://twitter.com/leeolney3/status/1483378919957008387">shared</a> on Twitter and Github on Jan 18, 2022.</p>
+<p>The table summarizes plain dark chocolate bars’ ratings (between 1 to 5) by twenty two manufacturers with more than fifteen reviews, data from <a href="http://flavorsofcacao.com/chocolate_database.html">Flavors of Cacao</a> credits to <a href="https://github.com/rfordatascience/tidytuesday/issues/408">Georgios Karamanis and Kelsey E Gonzalez</a>. The table uses an inline box plot function by <a href="https://themockup.blog/about.html">Thomas Mock</a> in the blog post <a href="https://themockup.blog/posts/2020-10-31-embedding-custom-features-in-gt-tables/">Embedding custom HTML in gt tables</a>.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gtExtras)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>choco<span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-01-18/chocolate.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get company_manufacturer with more than 15 reviews</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">=</span> choco <span class="sc">%&gt;%</span> <span class="fu">count</span>(company_manufacturer, <span class="at">sort=</span>T) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(n<span class="sc">&gt;</span><span class="dv">15</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Table data</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">=</span> choco <span class="sc">%&gt;%</span> </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(company_manufacturer <span class="sc">%in%</span> df1<span class="sc">$</span>company_manufacturer)  <span class="sc">%&gt;%</span> </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(company_manufacturer) <span class="sc">%&gt;%</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">avg=</span><span class="fu">mean</span>(rating)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rank =</span> <span class="fu">dense_rank</span>(<span class="fu">desc</span>(avg))) <span class="sc">%&gt;%</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(rank)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>rate_list <span class="ot">&lt;-</span> <span class="fu">split</span>(df2<span class="sc">$</span>rating, df2<span class="sc">$</span>rank)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>rate_rng <span class="ot">&lt;-</span> <span class="fu">range</span>(df2<span class="sc">$</span>rating)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Citation: Mock (2020, Oct. 31). The Mockup Blog: Embedding custom HTML in gt tables. Retrieved from https://themockup.blog/posts/2020-10-31-embedding-custom-features-in-gt-tables/</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>gt_plot <span class="ot">&lt;-</span> <span class="cf">function</span>(table_data, column, plot_data, plot_fun, ...){</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">text_transform</span>(</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    table_data,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># note the use of {{}} here - this is tidy eval</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># that allows you to indicate specific columns</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_body</span>(<span class="at">columns =</span> <span class="fu">vars</span>({{column}})),</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">fn =</span> <span class="cf">function</span>(x){</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>      plot <span class="ot">&lt;-</span> <span class="fu">map</span>(plot_data, plot_fun, <span class="at">width =</span> <span class="dv">300</span>, <span class="at">height =</span> <span class="dv">70</span>, <span class="at">same_lim =</span> <span class="cn">TRUE</span>, ...)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>      plot_svg <span class="ot">&lt;-</span> <span class="fu">map</span>(plot, <span class="st">"svg_text"</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>      <span class="fu">map</span>(plot_svg, gt<span class="sc">::</span>html)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># replaced gt_sparkline() with gt_plt_dist() in gtExtras version 0.4.4.9000</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># replaced colors with palette in gt_merge_stack in gtExtras version 0.4.4.9000</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>df2 <span class="sc">%&gt;%</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(company_manufacturer<span class="sc">==</span><span class="fu">case_when</span>(company_manufacturer<span class="sc">==</span><span class="st">"Smooth Chocolator, The"</span> <span class="sc">~</span> <span class="st">"The Smooth Chocolator"</span>, </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                                         <span class="cn">TRUE</span><span class="sc">~</span>company_manufacturer)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(company_location,company_manufacturer) <span class="sc">%&gt;%</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n=</span><span class="fu">n</span>(),</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">average =</span> <span class="fu">round</span>(<span class="fu">mean</span>(rating),<span class="dv">2</span>),</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">min=</span><span class="fu">min</span>(rating),</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">median =</span> <span class="fu">round</span>(<span class="fu">median</span>(rating),<span class="dv">2</span>),</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">max=</span><span class="fu">max</span>(rating),</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>            <span class="at">range=</span> max<span class="sc">-</span>min,</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>            <span class="at">histogram=</span><span class="fu">list</span>(rating),</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>            <span class="at">.groups=</span><span class="st">"drop"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(average)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">boxplot =</span><span class="st">""</span>,</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>         <span class="at">n2 =</span> n) <span class="sc">%&gt;%</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(company_location, company_manufacturer, n, n2, average, histogram, min, median, max, range, boxplot) <span class="sc">%&gt;%</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt_theme_538</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt_plt_dist</span>(histogram, </span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>              <span class="at">type =</span> <span class="st">"histogram"</span>, </span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>              <span class="at">line_color =</span> <span class="st">"#66462c"</span>, </span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>              <span class="at">fill_color =</span> <span class="st">"#66462c"</span>, </span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>              <span class="at">bw =</span> .<span class="dv">25</span>, </span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>              <span class="at">same_limit =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt_plot</span>(</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">column =</span> boxplot,  <span class="co"># column to create plot in </span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot_data =</span> rate_list, <span class="co"># external data to reference</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot_fun =</span> spec_boxplot,  <span class="co"># which plot fun</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">lim =</span> rate_rng, <span class="co"># range applied</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt_plt_bar</span>(<span class="at">column=</span>n2, </span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>             <span class="at">color=</span><span class="st">"#82a6b1"</span>,</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>             <span class="at">width=</span><span class="dv">30</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt_merge_stack</span>(company_manufacturer, company_location, <span class="at">palette=</span><span class="fu">c</span>(<span class="st">"#38160d"</span>,<span class="st">"grey"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt_color_rows</span>(<span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"average"</span>,<span class="st">"range"</span>),</span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>                <span class="at">palette =</span> <span class="st">"ggsci::brown_material"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_align</span>(<span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"histogram"</span>, <span class="st">"boxplot"</span>, <span class="st">"median"</span>),</span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>             <span class="at">align=</span><span class="st">"center"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(<span class="at">company_manufacturer =</span> <span class="fu">html</span>(<span class="st">"Manufacturer"</span>),</span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>             <span class="at">n=</span><span class="fu">html</span>(<span class="st">""</span>),</span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>             <span class="at">n2=</span><span class="fu">html</span>(<span class="st">"N reviewed"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_spanner</span>(<span class="at">label=</span><span class="st">"Rating"</span>, </span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>              <span class="at">columns=</span><span class="fu">c</span>(average<span class="sc">:</span>boxplot)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(<span class="at">title=</span><span class="fu">md</span>(<span class="st">"&lt;span style='color:#411d13'&gt;Ratings of Plain Dark Chocolate Bar&lt;/span&gt;"</span>),</span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>             <span class="at">subtitle=</span><span class="fu">md</span>(<span class="st">"Summary table of ratings (between 1 to 5) by 22 manufacturers with more than 15 reviews, according to *Flavors of Cacao*."</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_source_note</span>(<span class="at">source_note =</span> gt<span class="sc">::</span><span class="fu">html</span>(<span class="st">"&lt;br&gt;#TidyTuesday Week 3  |  Data source: Flavors of Cacao, by way of Georgios and Kelsey  |  Inline boxplot function from Thomas Mock"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Adjust sub-title font</span></span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">list</span>(</span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>      <span class="fu">cell_text</span>(</span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>        <span class="at">weight=</span><span class="st">"lighter"</span></span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">list</span>(</span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>      <span class="fu">cells_title</span>(<span class="at">groups =</span> <span class="st">"subtitle"</span>)</span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a>  )  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+
+<div id="jvvvvzavqx" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>@import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+html {
+  font-family: Chivo, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#jvvvvzavqx .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: 300;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: none;
+  border-top-width: 3px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#jvvvvzavqx .gt_heading {
+  background-color: #FFFFFF;
+  text-align: left;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#jvvvvzavqx .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#jvvvvzavqx .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#jvvvvzavqx .gt_bottom_border {
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jvvvvzavqx .gt_col_headings {
+  border-top-style: none;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #000000;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#jvvvvzavqx .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: normal;
+  text-transform: uppercase;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#jvvvvzavqx .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: normal;
+  text-transform: uppercase;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#jvvvvzavqx .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#jvvvvzavqx .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#jvvvvzavqx .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #000000;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#jvvvvzavqx .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-top-style: none;
+  border-top-width: 2px;
+  border-top-color: #000000;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#jvvvvzavqx .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  border-top-style: none;
+  border-top-width: 2px;
+  border-top-color: #000000;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: #FFFFFF;
+  vertical-align: middle;
+}
+
+#jvvvvzavqx .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#jvvvvzavqx .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#jvvvvzavqx .gt_row {
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#jvvvvzavqx .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-right-style: solid;
+  border-right-width: 0px;
+  border-right-color: #FFFFFF;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jvvvvzavqx .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#jvvvvzavqx .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#jvvvvzavqx .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jvvvvzavqx .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#jvvvvzavqx .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#jvvvvzavqx .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jvvvvzavqx .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jvvvvzavqx .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#jvvvvzavqx .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#jvvvvzavqx .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jvvvvzavqx .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#jvvvvzavqx .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jvvvvzavqx .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#jvvvvzavqx .gt_sourcenote {
+  font-size: 12px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jvvvvzavqx .gt_left {
+  text-align: left;
+}
+
+#jvvvvzavqx .gt_center {
+  text-align: center;
+}
+
+#jvvvvzavqx .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#jvvvvzavqx .gt_font_normal {
+  font-weight: normal;
+}
+
+#jvvvvzavqx .gt_font_bold {
+  font-weight: bold;
+}
+
+#jvvvvzavqx .gt_font_italic {
+  font-style: italic;
+}
+
+#jvvvvzavqx .gt_super {
+  font-size: 65%;
+}
+
+#jvvvvzavqx .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#jvvvvzavqx .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#jvvvvzavqx .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#jvvvvzavqx .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#jvvvvzavqx .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#jvvvvzavqx .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#jvvvvzavqx .gt_indent_5 {
+  text-indent: 25px;
+}
+
+tbody tr:last-child {
+  border-bottom: 2px solid #ffffff00;
+}
+</style>
+<table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <td colspan="10" class="gt_heading gt_title gt_font_normal" style=""><span style="color:#411d13">Ratings of Plain Dark Chocolate Bar</span></td>
+    </tr>
+    <tr>
+      <td colspan="10" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="font-weight: lighter;">Summary table of ratings (between 1 to 5) by 22 manufacturers with more than 15 reviews, according to <em>Flavors of Cacao</em>.</td>
+    </tr>
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" style="border-top-width: 0px; border-top-style: solid; border-top-color: black;" scope="col">Manufacturer</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="2" colspan="1" style="border-top-width: 0px; border-top-style: solid; border-top-color: black;" scope="col"></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" style="border-top-width: 0px; border-top-style: solid; border-top-color: black;" scope="col">N reviewed</th>
+      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="7" scope="colgroup">
+        <span class="gt_column_spanner">Rating</span>
+      </th>
+    </tr>
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="border-top-width: 0px; border-top-style: solid; border-top-color: black;" scope="col">average</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" style="border-top-width: 0px; border-top-style: solid; border-top-color: black;" scope="col">histogram</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="border-top-width: 0px; border-top-style: solid; border-top-color: black;" scope="col">min</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" style="border-top-width: 0px; border-top-style: solid; border-top-color: black;" scope="col">median</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="border-top-width: 0px; border-top-style: solid; border-top-color: black;" scope="col">max</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="border-top-width: 0px; border-top-style: solid; border-top-color: black;" scope="col">range</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" style="border-top-width: 0px; border-top-style: solid; border-top-color: black;" scope="col">boxplot</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_left"><div style="line-height:14px"><span style="font-weight:bold;font-variant:small-caps;color:#38160D;font-size:14px">Soma</span></div>
+<div style="line-height:10px"><span style="font-weight:bold;color:#BEBEBE;font-size:10px">Canada</span></div></td>
+<td class="gt_row gt_right">56</td>
+<td class="gt_row gt_left"><!--?xml version='1.0' encoding='UTF-8' ?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="85.04pt" height="14.17pt" viewbox="0 0 85.04 14.17"><defs>  <style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs>  <clippath id="cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3">    <rect x="0.00" y="0.00" width="85.04" height="14.17"></rect>  </clippath></defs><g clip-path="url(#cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3)"><rect x="3.76" y="1.77" width="73.78" height="10.63" style="stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #82A6B1;"></rect><line x1="3.76" y1="14.17" x2="3.76" y2="0.0000000000000018" style="stroke-width: 2.13; stroke-linecap: butt;"></line></g></svg></td>
+<td class="gt_row gt_right" style="background-color: #3E2723; color: #FFFFFF;">3.59</td>
+<td class="gt_row gt_center"><!--?xml version='1.0' encoding='UTF-8' ?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="85.04pt" height="14.17pt" viewbox="0 0 85.04 14.17"><defs>  <style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs>  <clippath id="cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3">    <rect x="0.00" y="0.00" width="85.04" height="14.17"></rect>  </clippath></defs><g clip-path="url(#cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3)"><rect x="39.60" y="11.81" width="5.84" height="1.72" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="45.44" y="10.95" width="5.84" height="2.58" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="51.28" y="5.80" width="5.84" height="7.73" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="57.12" y="0.64" width="5.84" height="12.88" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="62.96" y="2.36" width="5.84" height="11.17" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="68.80" y="1.50" width="5.84" height="12.03" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect></g></svg></td>
+<td class="gt_row gt_right">2.75</td>
+<td class="gt_row gt_center">3.50</td>
+<td class="gt_row gt_right">4.00</td>
+<td class="gt_row gt_right" style="background-color: #C9BBB6; color: #000000;">1.25</td>
+<td class="gt_row gt_center"><!--?xml version="1.0" encoding="UTF-8"?-->
+<svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="72.00pt" height="16.80pt" viewbox="0 0 72.00 16.80">
+  <defs>
+    <style type="text/css">
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+  </style>
+  </defs>
+  <rect width="100%" height="100%" style="stroke: none; fill: none;"></rect>
+  <defs>
+    <clippath id="cpMC4wMHw3Mi4wMHwwLjAwfDE2Ljgw">
+      <rect x="0.00" y="0.00" width="72.00" height="16.80"></rect>
+    </clippath>
+  </defs>
+  <g clip-path="url(#cpMC4wMHw3Mi4wMHwwLjAwfDE2Ljgw)">
+    <polygon points="52.67,11.51 52.67,5.29 66.00,5.29 66.00,11.51 " style="stroke-width: 0.75; stroke: none; fill: #D3D3D3;"></polygon>
+    <line x1="56.00" y1="11.51" x2="56.00" y2="5.29" style="stroke-width: 0.75; stroke: #FF0000; stroke-linecap: butt;"></line>
+    <line x1="36.00" y1="8.40" x2="52.67" y2="8.40" style="stroke-width: 0.75;"></line>
+    <line x1="69.33" y1="8.40" x2="66.00" y2="8.40" style="stroke-width: 0.75;"></line>
+    <line x1="36.00" y1="9.96" x2="36.00" y2="6.84" style="stroke-width: 0.75;"></line>
+    <line x1="69.33" y1="9.96" x2="69.33" y2="6.84" style="stroke-width: 0.75;"></line>
+    <polygon points="52.67,11.51 52.67,5.29 66.00,5.29 66.00,11.51 " style="stroke-width: 0.75; stroke: none;"></polygon>
+  </g>
+</svg>
+</td></tr>
+    <tr><td class="gt_row gt_left"><div style="line-height:14px"><span style="font-weight:bold;font-variant:small-caps;color:#38160D;font-size:14px">Arete</span></div>
+<div style="line-height:10px"><span style="font-weight:bold;color:#BEBEBE;font-size:10px">U.S.A.</span></div></td>
+<td class="gt_row gt_right">32</td>
+<td class="gt_row gt_left"><!--?xml version='1.0' encoding='UTF-8' ?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="85.04pt" height="14.17pt" viewbox="0 0 85.04 14.17"><defs>  <style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs>  <clippath id="cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3">    <rect x="0.00" y="0.00" width="85.04" height="14.17"></rect>  </clippath></defs><g clip-path="url(#cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3)"><rect x="3.76" y="1.77" width="42.16" height="10.63" style="stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #82A6B1;"></rect><line x1="3.76" y1="14.17" x2="3.76" y2="0.0000000000000018" style="stroke-width: 2.13; stroke-linecap: butt;"></line></g></svg></td>
+<td class="gt_row gt_right" style="background-color: #4C322D; color: #FFFFFF;">3.53</td>
+<td class="gt_row gt_center"><!--?xml version='1.0' encoding='UTF-8' ?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="85.04pt" height="14.17pt" viewbox="0 0 85.04 14.17"><defs>  <style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs>  <clippath id="cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3">    <rect x="0.00" y="0.00" width="85.04" height="14.17"></rect>  </clippath></defs><g clip-path="url(#cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3)"><rect x="39.60" y="12.46" width="5.84" height="1.07" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="45.44" y="11.38" width="5.84" height="2.15" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="51.28" y="7.09" width="5.84" height="6.44" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="57.12" y="0.64" width="5.84" height="12.88" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="62.96" y="8.16" width="5.84" height="5.37" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="68.80" y="7.09" width="5.84" height="6.44" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect></g></svg></td>
+<td class="gt_row gt_right">2.75</td>
+<td class="gt_row gt_center">3.50</td>
+<td class="gt_row gt_right">4.00</td>
+<td class="gt_row gt_right" style="background-color: #C9BBB6; color: #000000;">1.25</td>
+<td class="gt_row gt_center"><!--?xml version="1.0" encoding="UTF-8"?-->
+<svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="72.00pt" height="16.80pt" viewbox="0 0 72.00 16.80">
+  <defs>
+    <style type="text/css">
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+  </style>
+  </defs>
+  <rect width="100%" height="100%" style="stroke: none; fill: none;"></rect>
+  <defs>
+    <clippath id="cpMC4wMHw3Mi4wMHwwLjAwfDE2Ljgw">
+      <rect x="0.00" y="0.00" width="72.00" height="16.80"></rect>
+    </clippath>
+  </defs>
+  <g clip-path="url(#cpMC4wMHw3Mi4wMHwwLjAwfDE2Ljgw)">
+    <polygon points="49.33,11.51 49.33,5.29 62.67,5.29 62.67,11.51 " style="stroke-width: 0.75; stroke: none; fill: #D3D3D3;"></polygon>
+    <line x1="56.00" y1="11.51" x2="56.00" y2="5.29" style="stroke-width: 0.75; stroke: #FF0000; stroke-linecap: butt;"></line>
+    <line x1="36.00" y1="8.40" x2="49.33" y2="8.40" style="stroke-width: 0.75;"></line>
+    <line x1="69.33" y1="8.40" x2="62.67" y2="8.40" style="stroke-width: 0.75;"></line>
+    <line x1="36.00" y1="9.96" x2="36.00" y2="6.84" style="stroke-width: 0.75;"></line>
+    <line x1="69.33" y1="9.96" x2="69.33" y2="6.84" style="stroke-width: 0.75;"></line>
+    <polygon points="49.33,11.51 49.33,5.29 62.67,5.29 62.67,11.51 " style="stroke-width: 0.75; stroke: none;"></polygon>
+  </g>
+</svg>
+</td></tr>
+    <tr><td class="gt_row gt_left"><div style="line-height:14px"><span style="font-weight:bold;font-variant:small-caps;color:#38160D;font-size:14px">Smooth Chocolator, The</span></div>
+<div style="line-height:10px"><span style="font-weight:bold;color:#BEBEBE;font-size:10px">Australia</span></div></td>
+<td class="gt_row gt_right">17</td>
+<td class="gt_row gt_left"><!--?xml version='1.0' encoding='UTF-8' ?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="85.04pt" height="14.17pt" viewbox="0 0 85.04 14.17"><defs>  <style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs>  <clippath id="cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3">    <rect x="0.00" y="0.00" width="85.04" height="14.17"></rect>  </clippath></defs><g clip-path="url(#cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3)"><rect x="3.76" y="1.77" width="22.40" height="10.63" style="stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #82A6B1;"></rect><line x1="3.76" y1="14.17" x2="3.76" y2="0.0000000000000018" style="stroke-width: 2.13; stroke-linecap: butt;"></line></g></svg></td>
+<td class="gt_row gt_right" style="background-color: #50362F; color: #FFFFFF;">3.51</td>
+<td class="gt_row gt_center"><!--?xml version='1.0' encoding='UTF-8' ?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="85.04pt" height="14.17pt" viewbox="0 0 85.04 14.17"><defs>  <style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs>  <clippath id="cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3">    <rect x="0.00" y="0.00" width="85.04" height="14.17"></rect>  </clippath></defs><g clip-path="url(#cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3)"><rect x="39.60" y="11.38" width="5.84" height="2.15" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="45.44" y="9.23" width="5.84" height="4.29" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="51.28" y="9.23" width="5.84" height="4.29" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="57.12" y="4.94" width="5.84" height="8.59" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="62.96" y="0.64" width="5.84" height="12.88" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="68.80" y="9.23" width="5.84" height="4.29" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect></g></svg></td>
+<td class="gt_row gt_right">2.75</td>
+<td class="gt_row gt_center">3.50</td>
+<td class="gt_row gt_right">4.00</td>
+<td class="gt_row gt_right" style="background-color: #C9BBB6; color: #000000;">1.25</td>
+<td class="gt_row gt_center"><!--?xml version="1.0" encoding="UTF-8"?-->
+<svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="72.00pt" height="16.80pt" viewbox="0 0 72.00 16.80">
+  <defs>
+    <style type="text/css">
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+  </style>
+  </defs>
+  <rect width="100%" height="100%" style="stroke: none; fill: none;"></rect>
+  <defs>
+    <clippath id="cpMC4wMHw3Mi4wMHwwLjAwfDE2Ljgw">
+      <rect x="0.00" y="0.00" width="72.00" height="16.80"></rect>
+    </clippath>
+  </defs>
+  <g clip-path="url(#cpMC4wMHw3Mi4wMHwwLjAwfDE2Ljgw)">
+    <polygon points="49.33,11.51 49.33,5.29 62.67,5.29 62.67,11.51 " style="stroke-width: 0.75; stroke: none; fill: #D3D3D3;"></polygon>
+    <line x1="56.00" y1="11.51" x2="56.00" y2="5.29" style="stroke-width: 0.75; stroke: #FF0000; stroke-linecap: butt;"></line>
+    <line x1="36.00" y1="8.40" x2="49.33" y2="8.40" style="stroke-width: 0.75;"></line>
+    <line x1="69.33" y1="8.40" x2="62.67" y2="8.40" style="stroke-width: 0.75;"></line>
+    <line x1="36.00" y1="9.96" x2="36.00" y2="6.84" style="stroke-width: 0.75;"></line>
+    <line x1="69.33" y1="9.96" x2="69.33" y2="6.84" style="stroke-width: 0.75;"></line>
+    <polygon points="49.33,11.51 49.33,5.29 62.67,5.29 62.67,11.51 " style="stroke-width: 0.75; stroke: none;"></polygon>
+  </g>
+</svg>
+</td></tr>
+    <tr><td class="gt_row gt_left"><div style="line-height:14px"><span style="font-weight:bold;font-variant:small-caps;color:#38160D;font-size:14px">Domori</span></div>
+<div style="line-height:10px"><span style="font-weight:bold;color:#BEBEBE;font-size:10px">Italy</span></div></td>
+<td class="gt_row gt_right">23</td>
+<td class="gt_row gt_left"><!--?xml version='1.0' encoding='UTF-8' ?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="85.04pt" height="14.17pt" viewbox="0 0 85.04 14.17"><defs>  <style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs>  <clippath id="cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3">    <rect x="0.00" y="0.00" width="85.04" height="14.17"></rect>  </clippath></defs><g clip-path="url(#cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3)"><rect x="3.76" y="1.77" width="30.30" height="10.63" style="stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #82A6B1;"></rect><line x1="3.76" y1="14.17" x2="3.76" y2="0.0000000000000018" style="stroke-width: 2.13; stroke-linecap: butt;"></line></g></svg></td>
+<td class="gt_row gt_right" style="background-color: #533831; color: #FFFFFF;">3.50</td>
+<td class="gt_row gt_center"><!--?xml version='1.0' encoding='UTF-8' ?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="85.04pt" height="14.17pt" viewbox="0 0 85.04 14.17"><defs>  <style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs>  <clippath id="cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3">    <rect x="0.00" y="0.00" width="85.04" height="14.17"></rect>  </clippath></defs><g clip-path="url(#cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3)"><rect x="45.44" y="2.79" width="5.84" height="10.74" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="51.28" y="7.09" width="5.84" height="6.44" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="57.12" y="0.64" width="5.84" height="12.88" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="62.96" y="2.79" width="5.84" height="10.74" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="68.80" y="4.94" width="5.84" height="8.59" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect></g></svg></td>
+<td class="gt_row gt_right">3.00</td>
+<td class="gt_row gt_center">3.50</td>
+<td class="gt_row gt_right">4.00</td>
+<td class="gt_row gt_right" style="background-color: #EFEBE9; color: #000000;">1.00</td>
+<td class="gt_row gt_center"><!--?xml version="1.0" encoding="UTF-8"?-->
+<svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="72.00pt" height="16.80pt" viewbox="0 0 72.00 16.80">
+  <defs>
+    <style type="text/css">
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+  </style>
+  </defs>
+  <rect width="100%" height="100%" style="stroke: none; fill: none;"></rect>
+  <defs>
+    <clippath id="cpMC4wMHw3Mi4wMHwwLjAwfDE2Ljgw">
+      <rect x="0.00" y="0.00" width="72.00" height="16.80"></rect>
+    </clippath>
+  </defs>
+  <g clip-path="url(#cpMC4wMHw3Mi4wMHwwLjAwfDE2Ljgw)">
+    <polygon points="49.33,11.51 49.33,5.29 62.67,5.29 62.67,11.51 " style="stroke-width: 0.75; stroke: none; fill: #D3D3D3;"></polygon>
+    <line x1="56.00" y1="11.51" x2="56.00" y2="5.29" style="stroke-width: 0.75; stroke: #FF0000; stroke-linecap: butt;"></line>
+    <line x1="42.67" y1="8.40" x2="49.33" y2="8.40" style="stroke-width: 0.75;"></line>
+    <line x1="69.33" y1="8.40" x2="62.67" y2="8.40" style="stroke-width: 0.75;"></line>
+    <line x1="42.67" y1="9.96" x2="42.67" y2="6.84" style="stroke-width: 0.75;"></line>
+    <line x1="69.33" y1="9.96" x2="69.33" y2="6.84" style="stroke-width: 0.75;"></line>
+    <polygon points="49.33,11.51 49.33,5.29 62.67,5.29 62.67,11.51 " style="stroke-width: 0.75; stroke: none;"></polygon>
+  </g>
+</svg>
+</td></tr>
+    <tr><td class="gt_row gt_left"><div style="line-height:14px"><span style="font-weight:bold;font-variant:small-caps;color:#38160D;font-size:14px">Dick Taylor</span></div>
+<div style="line-height:10px"><span style="font-weight:bold;color:#BEBEBE;font-size:10px">U.S.A.</span></div></td>
+<td class="gt_row gt_right">19</td>
+<td class="gt_row gt_left"><!--?xml version='1.0' encoding='UTF-8' ?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="85.04pt" height="14.17pt" viewbox="0 0 85.04 14.17"><defs>  <style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs>  <clippath id="cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3">    <rect x="0.00" y="0.00" width="85.04" height="14.17"></rect>  </clippath></defs><g clip-path="url(#cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3)"><rect x="3.76" y="1.77" width="25.03" height="10.63" style="stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #82A6B1;"></rect><line x1="3.76" y1="14.17" x2="3.76" y2="0.0000000000000018" style="stroke-width: 2.13; stroke-linecap: butt;"></line></g></svg></td>
+<td class="gt_row gt_right" style="background-color: #553932; color: #FFFFFF;">3.49</td>
+<td class="gt_row gt_center"><!--?xml version='1.0' encoding='UTF-8' ?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="85.04pt" height="14.17pt" viewbox="0 0 85.04 14.17"><defs>  <style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs>  <clippath id="cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3">    <rect x="0.00" y="0.00" width="85.04" height="14.17"></rect>  </clippath></defs><g clip-path="url(#cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3)"><rect x="39.60" y="7.09" width="5.84" height="6.44" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="45.44" y="11.38" width="5.84" height="2.15" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="51.28" y="9.23" width="5.84" height="4.29" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="57.12" y="4.94" width="5.84" height="8.59" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="62.96" y="0.64" width="5.84" height="12.88" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="68.80" y="7.09" width="5.84" height="6.44" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect></g></svg></td>
+<td class="gt_row gt_right">2.75</td>
+<td class="gt_row gt_center">3.50</td>
+<td class="gt_row gt_right">4.00</td>
+<td class="gt_row gt_right" style="background-color: #C9BBB6; color: #000000;">1.25</td>
+<td class="gt_row gt_center"><!--?xml version="1.0" encoding="UTF-8"?-->
+<svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="72.00pt" height="16.80pt" viewbox="0 0 72.00 16.80">
+  <defs>
+    <style type="text/css">
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+  </style>
+  </defs>
+  <rect width="100%" height="100%" style="stroke: none; fill: none;"></rect>
+  <defs>
+    <clippath id="cpMC4wMHw3Mi4wMHwwLjAwfDE2Ljgw">
+      <rect x="0.00" y="0.00" width="72.00" height="16.80"></rect>
+    </clippath>
+  </defs>
+  <g clip-path="url(#cpMC4wMHw3Mi4wMHwwLjAwfDE2Ljgw)">
+    <polygon points="49.33,11.51 49.33,5.29 62.67,5.29 62.67,11.51 " style="stroke-width: 0.75; stroke: none; fill: #D3D3D3;"></polygon>
+    <line x1="56.00" y1="11.51" x2="56.00" y2="5.29" style="stroke-width: 0.75; stroke: #FF0000; stroke-linecap: butt;"></line>
+    <line x1="36.00" y1="8.40" x2="49.33" y2="8.40" style="stroke-width: 0.75;"></line>
+    <line x1="69.33" y1="8.40" x2="62.67" y2="8.40" style="stroke-width: 0.75;"></line>
+    <line x1="36.00" y1="9.96" x2="36.00" y2="6.84" style="stroke-width: 0.75;"></line>
+    <line x1="69.33" y1="9.96" x2="69.33" y2="6.84" style="stroke-width: 0.75;"></line>
+    <polygon points="49.33,11.51 49.33,5.29 62.67,5.29 62.67,11.51 " style="stroke-width: 0.75; stroke: none;"></polygon>
+  </g>
+</svg>
+</td></tr>
+    <tr><td class="gt_row gt_left"><div style="line-height:14px"><span style="font-weight:bold;font-variant:small-caps;color:#38160D;font-size:14px">Bonnat</span></div>
+<div style="line-height:10px"><span style="font-weight:bold;color:#BEBEBE;font-size:10px">France</span></div></td>
+<td class="gt_row gt_right">30</td>
+<td class="gt_row gt_left"><!--?xml version='1.0' encoding='UTF-8' ?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="85.04pt" height="14.17pt" viewbox="0 0 85.04 14.17"><defs>  <style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs>  <clippath id="cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3">    <rect x="0.00" y="0.00" width="85.04" height="14.17"></rect>  </clippath></defs><g clip-path="url(#cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3)"><rect x="3.76" y="1.77" width="39.53" height="10.63" style="stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #82A6B1;"></rect><line x1="3.76" y1="14.17" x2="3.76" y2="0.0000000000000018" style="stroke-width: 2.13; stroke-linecap: butt;"></line></g></svg></td>
+<td class="gt_row gt_right" style="background-color: #593D35; color: #FFFFFF;">3.47</td>
+<td class="gt_row gt_center"><!--?xml version='1.0' encoding='UTF-8' ?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="85.04pt" height="14.17pt" viewbox="0 0 85.04 14.17"><defs>  <style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs>  <clippath id="cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3">    <rect x="0.00" y="0.00" width="85.04" height="14.17"></rect>  </clippath></defs><g clip-path="url(#cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3)"><rect x="10.40" y="11.92" width="5.84" height="1.61" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="16.24" y="13.53" width="5.84" height="0.00" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="22.08" y="13.53" width="5.84" height="0.00" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="27.92" y="13.53" width="5.84" height="0.00" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="33.76" y="11.92" width="5.84" height="1.61" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="39.60" y="11.92" width="5.84" height="1.61" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="45.44" y="7.09" width="5.84" height="6.44" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="51.28" y="8.70" width="5.84" height="4.83" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="57.12" y="3.87" width="5.84" height="9.66" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="62.96" y="3.87" width="5.84" height="9.66" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="68.80" y="0.64" width="5.84" height="12.88" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect></g></svg></td>
+<td class="gt_row gt_right">1.50</td>
+<td class="gt_row gt_center">3.50</td>
+<td class="gt_row gt_right">4.00</td>
+<td class="gt_row gt_right" style="background-color: #3E2723; color: #FFFFFF;">2.50</td>
+<td class="gt_row gt_center"><!--?xml version="1.0" encoding="UTF-8"?-->
+<svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="72.00pt" height="16.80pt" viewbox="0 0 72.00 16.80">
+  <defs>
+    <style type="text/css">
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+  </style>
+  </defs>
+  <rect width="100%" height="100%" style="stroke: none; fill: none;"></rect>
+  <defs>
+    <clippath id="cpMC4wMHw3Mi4wMHwwLjAwfDE2Ljgw">
+      <rect x="0.00" y="0.00" width="72.00" height="16.80"></rect>
+    </clippath>
+  </defs>
+  <g clip-path="url(#cpMC4wMHw3Mi4wMHwwLjAwfDE2Ljgw)">
+    <polygon points="49.33,11.51 49.33,5.29 69.33,5.29 69.33,11.51 " style="stroke-width: 0.75; stroke: none; fill: #D3D3D3;"></polygon>
+    <line x1="56.00" y1="11.51" x2="56.00" y2="5.29" style="stroke-width: 0.75; stroke: #FF0000; stroke-linecap: butt;"></line>
+    <line x1="29.33" y1="8.40" x2="49.33" y2="8.40" style="stroke-width: 0.75;"></line>
+    <line x1="69.33" y1="8.40" x2="69.33" y2="8.40" style="stroke-width: 0.75;"></line>
+    <line x1="29.33" y1="9.96" x2="29.33" y2="6.84" style="stroke-width: 0.75;"></line>
+    <line x1="69.33" y1="9.96" x2="69.33" y2="6.84" style="stroke-width: 0.75;"></line>
+    <polygon points="49.33,11.51 49.33,5.29 69.33,5.29 69.33,11.51 " style="stroke-width: 0.75; stroke: none;"></polygon>
+    <circle cx="2.67" cy="8.40" r="0.54" style="stroke-width: 0.75;"></circle>
+  </g>
+</svg>
+</td></tr>
+    <tr><td class="gt_row gt_left"><div style="line-height:14px"><span style="font-weight:bold;font-variant:small-caps;color:#38160D;font-size:14px">Duffy's</span></div>
+<div style="line-height:10px"><span style="font-weight:bold;color:#BEBEBE;font-size:10px">U.K.</span></div></td>
+<td class="gt_row gt_right">17</td>
+<td class="gt_row gt_left"><!--?xml version='1.0' encoding='UTF-8' ?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="85.04pt" height="14.17pt" viewbox="0 0 85.04 14.17"><defs>  <style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs>  <clippath id="cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3">    <rect x="0.00" y="0.00" width="85.04" height="14.17"></rect>  </clippath></defs><g clip-path="url(#cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3)"><rect x="3.76" y="1.77" width="22.40" height="10.63" style="stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #82A6B1;"></rect><line x1="3.76" y1="14.17" x2="3.76" y2="0.0000000000000018" style="stroke-width: 2.13; stroke-linecap: butt;"></line></g></svg></td>
+<td class="gt_row gt_right" style="background-color: #604239; color: #FFFFFF;">3.44</td>
+<td class="gt_row gt_center"><!--?xml version='1.0' encoding='UTF-8' ?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="85.04pt" height="14.17pt" viewbox="0 0 85.04 14.17"><defs>  <style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs>  <clippath id="cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3">    <rect x="0.00" y="0.00" width="85.04" height="14.17"></rect>  </clippath></defs><g clip-path="url(#cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3)"><rect x="33.76" y="11.38" width="5.84" height="2.15" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="39.60" y="11.38" width="5.84" height="2.15" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="45.44" y="11.38" width="5.84" height="2.15" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="51.28" y="9.23" width="5.84" height="4.29" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="57.12" y="0.64" width="5.84" height="12.88" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="62.96" y="2.79" width="5.84" height="10.74" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="68.80" y="11.38" width="5.84" height="2.15" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect></g></svg></td>
+<td class="gt_row gt_right">2.50</td>
+<td class="gt_row gt_center">3.50</td>
+<td class="gt_row gt_right">4.00</td>
+<td class="gt_row gt_right" style="background-color: #A1887F; color: #000000;">1.50</td>
+<td class="gt_row gt_center"><!--?xml version="1.0" encoding="UTF-8"?-->
+<svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="72.00pt" height="16.80pt" viewbox="0 0 72.00 16.80">
+  <defs>
+    <style type="text/css">
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+  </style>
+  </defs>
+  <rect width="100%" height="100%" style="stroke: none; fill: none;"></rect>
+  <defs>
+    <clippath id="cpMC4wMHw3Mi4wMHwwLjAwfDE2Ljgw">
+      <rect x="0.00" y="0.00" width="72.00" height="16.80"></rect>
+    </clippath>
+  </defs>
+  <g clip-path="url(#cpMC4wMHw3Mi4wMHwwLjAwfDE2Ljgw)">
+    <polygon points="49.33,11.51 49.33,5.29 62.67,5.29 62.67,11.51 " style="stroke-width: 0.75; stroke: none; fill: #D3D3D3;"></polygon>
+    <line x1="56.00" y1="11.51" x2="56.00" y2="5.29" style="stroke-width: 0.75; stroke: #FF0000; stroke-linecap: butt;"></line>
+    <line x1="29.33" y1="8.40" x2="49.33" y2="8.40" style="stroke-width: 0.75;"></line>
+    <line x1="69.33" y1="8.40" x2="62.67" y2="8.40" style="stroke-width: 0.75;"></line>
+    <line x1="29.33" y1="9.96" x2="29.33" y2="6.84" style="stroke-width: 0.75;"></line>
+    <line x1="69.33" y1="9.96" x2="69.33" y2="6.84" style="stroke-width: 0.75;"></line>
+    <polygon points="49.33,11.51 49.33,5.29 62.67,5.29 62.67,11.51 " style="stroke-width: 0.75; stroke: none;"></polygon>
+  </g>
+</svg>
+</td></tr>
+    <tr><td class="gt_row gt_left"><div style="line-height:14px"><span style="font-weight:bold;font-variant:small-caps;color:#38160D;font-size:14px">A. Morin</span></div>
+<div style="line-height:10px"><span style="font-weight:bold;color:#BEBEBE;font-size:10px">France</span></div></td>
+<td class="gt_row gt_right">26</td>
+<td class="gt_row gt_left"><!--?xml version='1.0' encoding='UTF-8' ?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="85.04pt" height="14.17pt" viewbox="0 0 85.04 14.17"><defs>  <style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs>  <clippath id="cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3">    <rect x="0.00" y="0.00" width="85.04" height="14.17"></rect>  </clippath></defs><g clip-path="url(#cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3)"><rect x="3.76" y="1.77" width="34.26" height="10.63" style="stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #82A6B1;"></rect><line x1="3.76" y1="14.17" x2="3.76" y2="0.0000000000000018" style="stroke-width: 2.13; stroke-linecap: butt;"></line></g></svg></td>
+<td class="gt_row gt_right" style="background-color: #64463C; color: #FFFFFF;">3.42</td>
+<td class="gt_row gt_center"><!--?xml version='1.0' encoding='UTF-8' ?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="85.04pt" height="14.17pt" viewbox="0 0 85.04 14.17"><defs>  <style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs>  <clippath id="cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3">    <rect x="0.00" y="0.00" width="85.04" height="14.17"></rect>  </clippath></defs><g clip-path="url(#cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3)"><rect x="39.60" y="6.17" width="5.84" height="7.36" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="45.44" y="8.01" width="5.84" height="5.52" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="51.28" y="8.01" width="5.84" height="5.52" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="57.12" y="0.64" width="5.84" height="12.88" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="62.96" y="4.33" width="5.84" height="9.20" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="68.80" y="6.17" width="5.84" height="7.36" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect></g></svg></td>
+<td class="gt_row gt_right">2.75</td>
+<td class="gt_row gt_center">3.50</td>
+<td class="gt_row gt_right">4.00</td>
+<td class="gt_row gt_right" style="background-color: #C9BBB6; color: #000000;">1.25</td>
+<td class="gt_row gt_center"><!--?xml version="1.0" encoding="UTF-8"?-->
+<svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="72.00pt" height="16.80pt" viewbox="0 0 72.00 16.80">
+  <defs>
+    <style type="text/css">
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+  </style>
+  </defs>
+  <rect width="100%" height="100%" style="stroke: none; fill: none;"></rect>
+  <defs>
+    <clippath id="cpMC4wMHw3Mi4wMHwwLjAwfDE2Ljgw">
+      <rect x="0.00" y="0.00" width="72.00" height="16.80"></rect>
+    </clippath>
+  </defs>
+  <g clip-path="url(#cpMC4wMHw3Mi4wMHwwLjAwfDE2Ljgw)">
+    <polygon points="42.67,11.51 42.67,5.29 62.67,5.29 62.67,11.51 " style="stroke-width: 0.75; stroke: none; fill: #D3D3D3;"></polygon>
+    <line x1="56.00" y1="11.51" x2="56.00" y2="5.29" style="stroke-width: 0.75; stroke: #FF0000; stroke-linecap: butt;"></line>
+    <line x1="36.00" y1="8.40" x2="42.67" y2="8.40" style="stroke-width: 0.75;"></line>
+    <line x1="69.33" y1="8.40" x2="62.67" y2="8.40" style="stroke-width: 0.75;"></line>
+    <line x1="36.00" y1="9.96" x2="36.00" y2="6.84" style="stroke-width: 0.75;"></line>
+    <line x1="69.33" y1="9.96" x2="69.33" y2="6.84" style="stroke-width: 0.75;"></line>
+    <polygon points="42.67,11.51 42.67,5.29 62.67,5.29 62.67,11.51 " style="stroke-width: 0.75; stroke: none;"></polygon>
+  </g>
+</svg>
+</td></tr>
+    <tr><td class="gt_row gt_left"><div style="line-height:14px"><span style="font-weight:bold;font-variant:small-caps;color:#38160D;font-size:14px">Fresco</span></div>
+<div style="line-height:10px"><span style="font-weight:bold;color:#BEBEBE;font-size:10px">U.S.A.</span></div></td>
+<td class="gt_row gt_right">39</td>
+<td class="gt_row gt_left"><!--?xml version='1.0' encoding='UTF-8' ?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="85.04pt" height="14.17pt" viewbox="0 0 85.04 14.17"><defs>  <style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs>  <clippath id="cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3">    <rect x="0.00" y="0.00" width="85.04" height="14.17"></rect>  </clippath></defs><g clip-path="url(#cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3)"><rect x="3.76" y="1.77" width="51.38" height="10.63" style="stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #82A6B1;"></rect><line x1="3.76" y1="14.17" x2="3.76" y2="0.0000000000000018" style="stroke-width: 2.13; stroke-linecap: butt;"></line></g></svg></td>
+<td class="gt_row gt_right" style="background-color: #64463C; color: #FFFFFF;">3.42</td>
+<td class="gt_row gt_center"><!--?xml version='1.0' encoding='UTF-8' ?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="85.04pt" height="14.17pt" viewbox="0 0 85.04 14.17"><defs>  <style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs>  <clippath id="cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3">    <rect x="0.00" y="0.00" width="85.04" height="14.17"></rect>  </clippath></defs><g clip-path="url(#cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3)"><rect x="39.60" y="10.77" width="5.84" height="2.76" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="45.44" y="8.93" width="5.84" height="4.60" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="51.28" y="6.17" width="5.84" height="7.36" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="57.12" y="0.64" width="5.84" height="12.88" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="62.96" y="9.85" width="5.84" height="3.68" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="68.80" y="8.93" width="5.84" height="4.60" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect></g></svg></td>
+<td class="gt_row gt_right">2.75</td>
+<td class="gt_row gt_center">3.50</td>
+<td class="gt_row gt_right">4.00</td>
+<td class="gt_row gt_right" style="background-color: #C9BBB6; color: #000000;">1.25</td>
+<td class="gt_row gt_center"><!--?xml version="1.0" encoding="UTF-8"?-->
+<svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="72.00pt" height="16.80pt" viewbox="0 0 72.00 16.80">
+  <defs>
+    <style type="text/css">
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+  </style>
+  </defs>
+  <rect width="100%" height="100%" style="stroke: none; fill: none;"></rect>
+  <defs>
+    <clippath id="cpMC4wMHw3Mi4wMHwwLjAwfDE2Ljgw">
+      <rect x="0.00" y="0.00" width="72.00" height="16.80"></rect>
+    </clippath>
+  </defs>
+  <g clip-path="url(#cpMC4wMHw3Mi4wMHwwLjAwfDE2Ljgw)">
+    <polygon points="42.67,11.51 42.67,5.29 62.67,5.29 62.67,11.51 " style="stroke-width: 0.75; stroke: none; fill: #D3D3D3;"></polygon>
+    <line x1="56.00" y1="11.51" x2="56.00" y2="5.29" style="stroke-width: 0.75; stroke: #FF0000; stroke-linecap: butt;"></line>
+    <line x1="36.00" y1="8.40" x2="42.67" y2="8.40" style="stroke-width: 0.75;"></line>
+    <line x1="69.33" y1="8.40" x2="62.67" y2="8.40" style="stroke-width: 0.75;"></line>
+    <line x1="36.00" y1="9.96" x2="36.00" y2="6.84" style="stroke-width: 0.75;"></line>
+    <line x1="69.33" y1="9.96" x2="69.33" y2="6.84" style="stroke-width: 0.75;"></line>
+    <polygon points="42.67,11.51 42.67,5.29 62.67,5.29 62.67,11.51 " style="stroke-width: 0.75; stroke: none;"></polygon>
+  </g>
+</svg>
+</td></tr>
+    <tr><td class="gt_row gt_left"><div style="line-height:14px"><span style="font-weight:bold;font-variant:small-caps;color:#38160D;font-size:14px">Rogue</span></div>
+<div style="line-height:10px"><span style="font-weight:bold;color:#BEBEBE;font-size:10px">U.S.A.</span></div></td>
+<td class="gt_row gt_right">16</td>
+<td class="gt_row gt_left"><!--?xml version='1.0' encoding='UTF-8' ?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="85.04pt" height="14.17pt" viewbox="0 0 85.04 14.17"><defs>  <style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs>  <clippath id="cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3">    <rect x="0.00" y="0.00" width="85.04" height="14.17"></rect>  </clippath></defs><g clip-path="url(#cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3)"><rect x="3.76" y="1.77" width="21.08" height="10.63" style="stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #82A6B1;"></rect><line x1="3.76" y1="14.17" x2="3.76" y2="0.0000000000000018" style="stroke-width: 2.13; stroke-linecap: butt;"></line></g></svg></td>
+<td class="gt_row gt_right" style="background-color: #64463C; color: #FFFFFF;">3.42</td>
+<td class="gt_row gt_center"><!--?xml version='1.0' encoding='UTF-8' ?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="85.04pt" height="14.17pt" viewbox="0 0 85.04 14.17"><defs>  <style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs>  <clippath id="cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3">    <rect x="0.00" y="0.00" width="85.04" height="14.17"></rect>  </clippath></defs><g clip-path="url(#cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3)"><rect x="39.60" y="9.23" width="5.84" height="4.29" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="45.44" y="7.09" width="5.84" height="6.44" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="51.28" y="11.38" width="5.84" height="2.15" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="57.12" y="7.09" width="5.84" height="6.44" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="62.96" y="0.64" width="5.84" height="12.88" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="68.80" y="11.38" width="5.84" height="2.15" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect></g></svg></td>
+<td class="gt_row gt_right">2.75</td>
+<td class="gt_row gt_center">3.50</td>
+<td class="gt_row gt_right">4.00</td>
+<td class="gt_row gt_right" style="background-color: #C9BBB6; color: #000000;">1.25</td>
+<td class="gt_row gt_center"><!--?xml version="1.0" encoding="UTF-8"?-->
+<svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="72.00pt" height="16.80pt" viewbox="0 0 72.00 16.80">
+  <defs>
+    <style type="text/css">
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+  </style>
+  </defs>
+  <rect width="100%" height="100%" style="stroke: none; fill: none;"></rect>
+  <defs>
+    <clippath id="cpMC4wMHw3Mi4wMHwwLjAwfDE2Ljgw">
+      <rect x="0.00" y="0.00" width="72.00" height="16.80"></rect>
+    </clippath>
+  </defs>
+  <g clip-path="url(#cpMC4wMHw3Mi4wMHwwLjAwfDE2Ljgw)">
+    <polygon points="49.33,11.51 49.33,5.29 56.00,5.29 56.00,11.51 " style="stroke-width: 0.75; stroke: none; fill: #D3D3D3;"></polygon>
+    <line x1="56.00" y1="11.51" x2="56.00" y2="5.29" style="stroke-width: 0.75; stroke: #FF0000; stroke-linecap: butt;"></line>
+    <line x1="42.67" y1="8.40" x2="49.33" y2="8.40" style="stroke-width: 0.75;"></line>
+    <line x1="62.67" y1="8.40" x2="56.00" y2="8.40" style="stroke-width: 0.75;"></line>
+    <line x1="42.67" y1="9.96" x2="42.67" y2="6.84" style="stroke-width: 0.75;"></line>
+    <line x1="62.67" y1="9.96" x2="62.67" y2="6.84" style="stroke-width: 0.75;"></line>
+    <polygon points="49.33,11.51 49.33,5.29 56.00,5.29 56.00,11.51 " style="stroke-width: 0.75; stroke: none;"></polygon>
+    <circle cx="36.00" cy="8.40" r="0.54" style="stroke-width: 0.75;"></circle>
+    <circle cx="36.00" cy="8.40" r="0.54" style="stroke-width: 0.75;"></circle>
+    <circle cx="36.00" cy="8.40" r="0.54" style="stroke-width: 0.75;"></circle>
+    <circle cx="69.33" cy="8.40" r="0.54" style="stroke-width: 0.75;"></circle>
+    <circle cx="69.33" cy="8.40" r="0.54" style="stroke-width: 0.75;"></circle>
+    <circle cx="69.33" cy="8.40" r="0.54" style="stroke-width: 0.75;"></circle>
+    <circle cx="69.33" cy="8.40" r="0.54" style="stroke-width: 0.75;"></circle>
+    <circle cx="69.33" cy="8.40" r="0.54" style="stroke-width: 0.75;"></circle>
+  </g>
+</svg>
+</td></tr>
+    <tr><td class="gt_row gt_left"><div style="line-height:14px"><span style="font-weight:bold;font-variant:small-caps;color:#38160D;font-size:14px">Pierre Marcolini</span></div>
+<div style="line-height:10px"><span style="font-weight:bold;color:#BEBEBE;font-size:10px">Belgium</span></div></td>
+<td class="gt_row gt_right">17</td>
+<td class="gt_row gt_left"><!--?xml version='1.0' encoding='UTF-8' ?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="85.04pt" height="14.17pt" viewbox="0 0 85.04 14.17"><defs>  <style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs>  <clippath id="cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3">    <rect x="0.00" y="0.00" width="85.04" height="14.17"></rect>  </clippath></defs><g clip-path="url(#cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3)"><rect x="3.76" y="1.77" width="22.40" height="10.63" style="stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #82A6B1;"></rect><line x1="3.76" y1="14.17" x2="3.76" y2="0.0000000000000018" style="stroke-width: 2.13; stroke-linecap: butt;"></line></g></svg></td>
+<td class="gt_row gt_right" style="background-color: #69493F; color: #FFFFFF;">3.40</td>
+<td class="gt_row gt_center"><!--?xml version='1.0' encoding='UTF-8' ?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="85.04pt" height="14.17pt" viewbox="0 0 85.04 14.17"><defs>  <style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs>  <clippath id="cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3">    <rect x="0.00" y="0.00" width="85.04" height="14.17"></rect>  </clippath></defs><g clip-path="url(#cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3)"><rect x="45.44" y="0.64" width="5.84" height="12.88" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="51.28" y="9.85" width="5.84" height="3.68" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="57.12" y="9.85" width="5.84" height="3.68" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="62.96" y="8.01" width="5.84" height="5.52" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="68.80" y="8.01" width="5.84" height="5.52" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect></g></svg></td>
+<td class="gt_row gt_right">3.00</td>
+<td class="gt_row gt_center">3.25</td>
+<td class="gt_row gt_right">4.00</td>
+<td class="gt_row gt_right" style="background-color: #EFEBE9; color: #000000;">1.00</td>
+<td class="gt_row gt_center"><!--?xml version="1.0" encoding="UTF-8"?-->
+<svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="72.00pt" height="16.80pt" viewbox="0 0 72.00 16.80">
+  <defs>
+    <style type="text/css">
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+  </style>
+  </defs>
+  <rect width="100%" height="100%" style="stroke: none; fill: none;"></rect>
+  <defs>
+    <clippath id="cpMC4wMHw3Mi4wMHwwLjAwfDE2Ljgw">
+      <rect x="0.00" y="0.00" width="72.00" height="16.80"></rect>
+    </clippath>
+  </defs>
+  <g clip-path="url(#cpMC4wMHw3Mi4wMHwwLjAwfDE2Ljgw)">
+    <polygon points="42.67,11.51 42.67,5.29 62.67,5.29 62.67,11.51 " style="stroke-width: 0.75; stroke: none; fill: #D3D3D3;"></polygon>
+    <line x1="49.33" y1="11.51" x2="49.33" y2="5.29" style="stroke-width: 0.75; stroke: #FF0000; stroke-linecap: butt;"></line>
+    <line x1="42.67" y1="8.40" x2="42.67" y2="8.40" style="stroke-width: 0.75;"></line>
+    <line x1="69.33" y1="8.40" x2="62.67" y2="8.40" style="stroke-width: 0.75;"></line>
+    <line x1="42.67" y1="9.96" x2="42.67" y2="6.84" style="stroke-width: 0.75;"></line>
+    <line x1="69.33" y1="9.96" x2="69.33" y2="6.84" style="stroke-width: 0.75;"></line>
+    <polygon points="42.67,11.51 42.67,5.29 62.67,5.29 62.67,11.51 " style="stroke-width: 0.75; stroke: none;"></polygon>
+  </g>
+</svg>
+</td></tr>
+    <tr><td class="gt_row gt_left"><div style="line-height:14px"><span style="font-weight:bold;font-variant:small-caps;color:#38160D;font-size:14px">Castronovo</span></div>
+<div style="line-height:10px"><span style="font-weight:bold;color:#BEBEBE;font-size:10px">U.S.A.</span></div></td>
+<td class="gt_row gt_right">19</td>
+<td class="gt_row gt_left"><!--?xml version='1.0' encoding='UTF-8' ?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="85.04pt" height="14.17pt" viewbox="0 0 85.04 14.17"><defs>  <style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs>  <clippath id="cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3">    <rect x="0.00" y="0.00" width="85.04" height="14.17"></rect>  </clippath></defs><g clip-path="url(#cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3)"><rect x="3.76" y="1.77" width="25.03" height="10.63" style="stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #82A6B1;"></rect><line x1="3.76" y1="14.17" x2="3.76" y2="0.0000000000000018" style="stroke-width: 2.13; stroke-linecap: butt;"></line></g></svg></td>
+<td class="gt_row gt_right" style="background-color: #6E4C41; color: #FFFFFF;">3.38</td>
+<td class="gt_row gt_center"><!--?xml version='1.0' encoding='UTF-8' ?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="85.04pt" height="14.17pt" viewbox="0 0 85.04 14.17"><defs>  <style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs>  <clippath id="cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3">    <rect x="0.00" y="0.00" width="85.04" height="14.17"></rect>  </clippath></defs><g clip-path="url(#cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3)"><rect x="33.76" y="11.38" width="5.84" height="2.15" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="39.60" y="9.23" width="5.84" height="4.29" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="45.44" y="9.23" width="5.84" height="4.29" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="51.28" y="7.09" width="5.84" height="6.44" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="57.12" y="0.64" width="5.84" height="12.88" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="62.96" y="9.23" width="5.84" height="4.29" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="68.80" y="7.09" width="5.84" height="6.44" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect></g></svg></td>
+<td class="gt_row gt_right">2.50</td>
+<td class="gt_row gt_center">3.50</td>
+<td class="gt_row gt_right">4.00</td>
+<td class="gt_row gt_right" style="background-color: #A1887F; color: #000000;">1.50</td>
+<td class="gt_row gt_center"><!--?xml version="1.0" encoding="UTF-8"?-->
+<svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="72.00pt" height="16.80pt" viewbox="0 0 72.00 16.80">
+  <defs>
+    <style type="text/css">
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+  </style>
+  </defs>
+  <rect width="100%" height="100%" style="stroke: none; fill: none;"></rect>
+  <defs>
+    <clippath id="cpMC4wMHw3Mi4wMHwwLjAwfDE2Ljgw">
+      <rect x="0.00" y="0.00" width="72.00" height="16.80"></rect>
+    </clippath>
+  </defs>
+  <g clip-path="url(#cpMC4wMHw3Mi4wMHwwLjAwfDE2Ljgw)">
+    <polygon points="46.00,11.51 46.00,5.29 59.33,5.29 59.33,11.51 " style="stroke-width: 0.75; stroke: none; fill: #D3D3D3;"></polygon>
+    <line x1="56.00" y1="11.51" x2="56.00" y2="5.29" style="stroke-width: 0.75; stroke: #FF0000; stroke-linecap: butt;"></line>
+    <line x1="29.33" y1="8.40" x2="46.00" y2="8.40" style="stroke-width: 0.75;"></line>
+    <line x1="69.33" y1="8.40" x2="59.33" y2="8.40" style="stroke-width: 0.75;"></line>
+    <line x1="29.33" y1="9.96" x2="29.33" y2="6.84" style="stroke-width: 0.75;"></line>
+    <line x1="69.33" y1="9.96" x2="69.33" y2="6.84" style="stroke-width: 0.75;"></line>
+    <polygon points="46.00,11.51 46.00,5.29 59.33,5.29 59.33,11.51 " style="stroke-width: 0.75; stroke: none;"></polygon>
+  </g>
+</svg>
+</td></tr>
+    <tr><td class="gt_row gt_left"><div style="line-height:14px"><span style="font-weight:bold;font-variant:small-caps;color:#38160D;font-size:14px">Zotter</span></div>
+<div style="line-height:10px"><span style="font-weight:bold;color:#BEBEBE;font-size:10px">Austria</span></div></td>
+<td class="gt_row gt_right">21</td>
+<td class="gt_row gt_left"><!--?xml version='1.0' encoding='UTF-8' ?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="85.04pt" height="14.17pt" viewbox="0 0 85.04 14.17"><defs>  <style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs>  <clippath id="cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3">    <rect x="0.00" y="0.00" width="85.04" height="14.17"></rect>  </clippath></defs><g clip-path="url(#cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3)"><rect x="3.76" y="1.77" width="27.67" height="10.63" style="stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #82A6B1;"></rect><line x1="3.76" y1="14.17" x2="3.76" y2="0.0000000000000018" style="stroke-width: 2.13; stroke-linecap: butt;"></line></g></svg></td>
+<td class="gt_row gt_right" style="background-color: #785447; color: #FFFFFF;">3.32</td>
+<td class="gt_row gt_center"><!--?xml version='1.0' encoding='UTF-8' ?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="85.04pt" height="14.17pt" viewbox="0 0 85.04 14.17"><defs>  <style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs>  <clippath id="cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3">    <rect x="0.00" y="0.00" width="85.04" height="14.17"></rect>  </clippath></defs><g clip-path="url(#cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3)"><rect x="39.60" y="11.38" width="5.84" height="2.15" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="45.44" y="0.64" width="5.84" height="12.88" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="51.28" y="4.94" width="5.84" height="8.59" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="57.12" y="0.64" width="5.84" height="12.88" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="62.96" y="4.94" width="5.84" height="8.59" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect></g></svg></td>
+<td class="gt_row gt_right">2.75</td>
+<td class="gt_row gt_center">3.25</td>
+<td class="gt_row gt_right">3.75</td>
+<td class="gt_row gt_right" style="background-color: #EFEBE9; color: #000000;">1.00</td>
+<td class="gt_row gt_center"><!--?xml version="1.0" encoding="UTF-8"?-->
+<svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="72.00pt" height="16.80pt" viewbox="0 0 72.00 16.80">
+  <defs>
+    <style type="text/css">
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+  </style>
+  </defs>
+  <rect width="100%" height="100%" style="stroke: none; fill: none;"></rect>
+  <defs>
+    <clippath id="cpMC4wMHw3Mi4wMHwwLjAwfDE2Ljgw">
+      <rect x="0.00" y="0.00" width="72.00" height="16.80"></rect>
+    </clippath>
+  </defs>
+  <g clip-path="url(#cpMC4wMHw3Mi4wMHwwLjAwfDE2Ljgw)">
+    <polygon points="42.67,11.51 42.67,5.29 56.00,5.29 56.00,11.51 " style="stroke-width: 0.75; stroke: none; fill: #D3D3D3;"></polygon>
+    <line x1="49.33" y1="11.51" x2="49.33" y2="5.29" style="stroke-width: 0.75; stroke: #FF0000; stroke-linecap: butt;"></line>
+    <line x1="36.00" y1="8.40" x2="42.67" y2="8.40" style="stroke-width: 0.75;"></line>
+    <line x1="62.67" y1="8.40" x2="56.00" y2="8.40" style="stroke-width: 0.75;"></line>
+    <line x1="36.00" y1="9.96" x2="36.00" y2="6.84" style="stroke-width: 0.75;"></line>
+    <line x1="62.67" y1="9.96" x2="62.67" y2="6.84" style="stroke-width: 0.75;"></line>
+    <polygon points="42.67,11.51 42.67,5.29 56.00,5.29 56.00,11.51 " style="stroke-width: 0.75; stroke: none;"></polygon>
+  </g>
+</svg>
+</td></tr>
+    <tr><td class="gt_row gt_left"><div style="line-height:14px"><span style="font-weight:bold;font-variant:small-caps;color:#38160D;font-size:14px">Valrhona</span></div>
+<div style="line-height:10px"><span style="font-weight:bold;color:#BEBEBE;font-size:10px">France</span></div></td>
+<td class="gt_row gt_right">22</td>
+<td class="gt_row gt_left"><!--?xml version='1.0' encoding='UTF-8' ?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="85.04pt" height="14.17pt" viewbox="0 0 85.04 14.17"><defs>  <style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs>  <clippath id="cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3">    <rect x="0.00" y="0.00" width="85.04" height="14.17"></rect>  </clippath></defs><g clip-path="url(#cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3)"><rect x="3.76" y="1.77" width="28.99" height="10.63" style="stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #82A6B1;"></rect><line x1="3.76" y1="14.17" x2="3.76" y2="0.0000000000000018" style="stroke-width: 2.13; stroke-linecap: butt;"></line></g></svg></td>
+<td class="gt_row gt_right" style="background-color: #785447; color: #FFFFFF;">3.32</td>
+<td class="gt_row gt_center"><!--?xml version='1.0' encoding='UTF-8' ?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="85.04pt" height="14.17pt" viewbox="0 0 85.04 14.17"><defs>  <style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs>  <clippath id="cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3">    <rect x="0.00" y="0.00" width="85.04" height="14.17"></rect>  </clippath></defs><g clip-path="url(#cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3)"><rect x="10.40" y="10.31" width="5.84" height="3.22" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="16.24" y="13.53" width="5.84" height="0.00" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="22.08" y="13.53" width="5.84" height="0.00" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="27.92" y="13.53" width="5.84" height="0.00" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="33.76" y="7.09" width="5.84" height="6.44" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="39.60" y="10.31" width="5.84" height="3.22" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="45.44" y="3.87" width="5.84" height="9.66" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="51.28" y="3.87" width="5.84" height="9.66" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="57.12" y="0.64" width="5.84" height="12.88" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="62.96" y="0.64" width="5.84" height="12.88" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="68.80" y="0.64" width="5.84" height="12.88" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect></g></svg></td>
+<td class="gt_row gt_right">1.50</td>
+<td class="gt_row gt_center">3.50</td>
+<td class="gt_row gt_right">4.00</td>
+<td class="gt_row gt_right" style="background-color: #3E2723; color: #FFFFFF;">2.50</td>
+<td class="gt_row gt_center"><!--?xml version="1.0" encoding="UTF-8"?-->
+<svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="72.00pt" height="16.80pt" viewbox="0 0 72.00 16.80">
+  <defs>
+    <style type="text/css">
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+  </style>
+  </defs>
+  <rect width="100%" height="100%" style="stroke: none; fill: none;"></rect>
+  <defs>
+    <clippath id="cpMC4wMHw3Mi4wMHwwLjAwfDE2Ljgw">
+      <rect x="0.00" y="0.00" width="72.00" height="16.80"></rect>
+    </clippath>
+  </defs>
+  <g clip-path="url(#cpMC4wMHw3Mi4wMHwwLjAwfDE2Ljgw)">
+    <polygon points="42.67,11.51 42.67,5.29 62.67,5.29 62.67,11.51 " style="stroke-width: 0.75; stroke: none; fill: #D3D3D3;"></polygon>
+    <line x1="56.00" y1="11.51" x2="56.00" y2="5.29" style="stroke-width: 0.75; stroke: #FF0000; stroke-linecap: butt;"></line>
+    <line x1="29.33" y1="8.40" x2="42.67" y2="8.40" style="stroke-width: 0.75;"></line>
+    <line x1="69.33" y1="8.40" x2="62.67" y2="8.40" style="stroke-width: 0.75;"></line>
+    <line x1="29.33" y1="9.96" x2="29.33" y2="6.84" style="stroke-width: 0.75;"></line>
+    <line x1="69.33" y1="9.96" x2="69.33" y2="6.84" style="stroke-width: 0.75;"></line>
+    <polygon points="42.67,11.51 42.67,5.29 62.67,5.29 62.67,11.51 " style="stroke-width: 0.75; stroke: none;"></polygon>
+    <circle cx="2.67" cy="8.40" r="0.54" style="stroke-width: 0.75;"></circle>
+  </g>
+</svg>
+</td></tr>
+    <tr><td class="gt_row gt_left"><div style="line-height:14px"><span style="font-weight:bold;font-variant:small-caps;color:#38160D;font-size:14px">Dandelion</span></div>
+<div style="line-height:10px"><span style="font-weight:bold;color:#BEBEBE;font-size:10px">U.S.A.</span></div></td>
+<td class="gt_row gt_right">25</td>
+<td class="gt_row gt_left"><!--?xml version='1.0' encoding='UTF-8' ?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="85.04pt" height="14.17pt" viewbox="0 0 85.04 14.17"><defs>  <style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs>  <clippath id="cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3">    <rect x="0.00" y="0.00" width="85.04" height="14.17"></rect>  </clippath></defs><g clip-path="url(#cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3)"><rect x="3.76" y="1.77" width="32.94" height="10.63" style="stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #82A6B1;"></rect><line x1="3.76" y1="14.17" x2="3.76" y2="0.0000000000000018" style="stroke-width: 2.13; stroke-linecap: butt;"></line></g></svg></td>
+<td class="gt_row gt_right" style="background-color: #7D5A4E; color: #FFFFFF;">3.30</td>
+<td class="gt_row gt_center"><!--?xml version='1.0' encoding='UTF-8' ?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="85.04pt" height="14.17pt" viewbox="0 0 85.04 14.17"><defs>  <style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs>  <clippath id="cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3">    <rect x="0.00" y="0.00" width="85.04" height="14.17"></rect>  </clippath></defs><g clip-path="url(#cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3)"><rect x="39.60" y="7.09" width="5.84" height="6.44" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="45.44" y="7.09" width="5.84" height="6.44" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="51.28" y="5.48" width="5.84" height="8.05" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="57.12" y="0.64" width="5.84" height="12.88" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="62.96" y="8.70" width="5.84" height="4.83" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="68.80" y="11.92" width="5.84" height="1.61" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect></g></svg></td>
+<td class="gt_row gt_right">2.75</td>
+<td class="gt_row gt_center">3.25</td>
+<td class="gt_row gt_right">4.00</td>
+<td class="gt_row gt_right" style="background-color: #C9BBB6; color: #000000;">1.25</td>
+<td class="gt_row gt_center"><!--?xml version="1.0" encoding="UTF-8"?-->
+<svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="72.00pt" height="16.80pt" viewbox="0 0 72.00 16.80">
+  <defs>
+    <style type="text/css">
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+  </style>
+  </defs>
+  <rect width="100%" height="100%" style="stroke: none; fill: none;"></rect>
+  <defs>
+    <clippath id="cpMC4wMHw3Mi4wMHwwLjAwfDE2Ljgw">
+      <rect x="0.00" y="0.00" width="72.00" height="16.80"></rect>
+    </clippath>
+  </defs>
+  <g clip-path="url(#cpMC4wMHw3Mi4wMHwwLjAwfDE2Ljgw)">
+    <polygon points="42.67,11.51 42.67,5.29 56.00,5.29 56.00,11.51 " style="stroke-width: 0.75; stroke: none; fill: #D3D3D3;"></polygon>
+    <line x1="49.33" y1="11.51" x2="49.33" y2="5.29" style="stroke-width: 0.75; stroke: #FF0000; stroke-linecap: butt;"></line>
+    <line x1="36.00" y1="8.40" x2="42.67" y2="8.40" style="stroke-width: 0.75;"></line>
+    <line x1="69.33" y1="8.40" x2="56.00" y2="8.40" style="stroke-width: 0.75;"></line>
+    <line x1="36.00" y1="9.96" x2="36.00" y2="6.84" style="stroke-width: 0.75;"></line>
+    <line x1="69.33" y1="9.96" x2="69.33" y2="6.84" style="stroke-width: 0.75;"></line>
+    <polygon points="42.67,11.51 42.67,5.29 56.00,5.29 56.00,11.51 " style="stroke-width: 0.75; stroke: none;"></polygon>
+  </g>
+</svg>
+</td></tr>
+    <tr><td class="gt_row gt_left"><div style="line-height:14px"><span style="font-weight:bold;font-variant:small-caps;color:#38160D;font-size:14px">Scharffen Berger</span></div>
+<div style="line-height:10px"><span style="font-weight:bold;color:#BEBEBE;font-size:10px">U.S.A.</span></div></td>
+<td class="gt_row gt_right">17</td>
+<td class="gt_row gt_left"><!--?xml version='1.0' encoding='UTF-8' ?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="85.04pt" height="14.17pt" viewbox="0 0 85.04 14.17"><defs>  <style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs>  <clippath id="cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3">    <rect x="0.00" y="0.00" width="85.04" height="14.17"></rect>  </clippath></defs><g clip-path="url(#cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3)"><rect x="3.76" y="1.77" width="22.40" height="10.63" style="stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #82A6B1;"></rect><line x1="3.76" y1="14.17" x2="3.76" y2="0.0000000000000018" style="stroke-width: 2.13; stroke-linecap: butt;"></line></g></svg></td>
+<td class="gt_row gt_right" style="background-color: #94786D; color: #000000;">3.22</td>
+<td class="gt_row gt_center"><!--?xml version='1.0' encoding='UTF-8' ?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="85.04pt" height="14.17pt" viewbox="0 0 85.04 14.17"><defs>  <style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs>  <clippath id="cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3">    <rect x="0.00" y="0.00" width="85.04" height="14.17"></rect>  </clippath></defs><g clip-path="url(#cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3)"><rect x="22.08" y="5.80" width="5.84" height="7.73" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="27.92" y="13.53" width="5.84" height="0.00" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="33.76" y="13.53" width="5.84" height="0.00" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="39.60" y="13.53" width="5.84" height="0.00" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="45.44" y="0.64" width="5.84" height="12.88" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="51.28" y="13.53" width="5.84" height="0.00" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="57.12" y="8.38" width="5.84" height="5.15" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="62.96" y="0.64" width="5.84" height="12.88" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="68.80" y="8.38" width="5.84" height="5.15" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect></g></svg></td>
+<td class="gt_row gt_right">2.00</td>
+<td class="gt_row gt_center">3.50</td>
+<td class="gt_row gt_right">4.00</td>
+<td class="gt_row gt_right" style="background-color: #6D4C41; color: #FFFFFF;">2.00</td>
+<td class="gt_row gt_center"><!--?xml version="1.0" encoding="UTF-8"?-->
+<svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="72.00pt" height="16.80pt" viewbox="0 0 72.00 16.80">
+  <defs>
+    <style type="text/css">
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+  </style>
+  </defs>
+  <rect width="100%" height="100%" style="stroke: none; fill: none;"></rect>
+  <defs>
+    <clippath id="cpMC4wMHw3Mi4wMHwwLjAwfDE2Ljgw">
+      <rect x="0.00" y="0.00" width="72.00" height="16.80"></rect>
+    </clippath>
+  </defs>
+  <g clip-path="url(#cpMC4wMHw3Mi4wMHwwLjAwfDE2Ljgw)">
+    <polygon points="42.67,11.51 42.67,5.29 62.67,5.29 62.67,11.51 " style="stroke-width: 0.75; stroke: none; fill: #D3D3D3;"></polygon>
+    <line x1="56.00" y1="11.51" x2="56.00" y2="5.29" style="stroke-width: 0.75; stroke: #FF0000; stroke-linecap: butt;"></line>
+    <line x1="16.00" y1="8.40" x2="42.67" y2="8.40" style="stroke-width: 0.75;"></line>
+    <line x1="69.33" y1="8.40" x2="62.67" y2="8.40" style="stroke-width: 0.75;"></line>
+    <line x1="16.00" y1="9.96" x2="16.00" y2="6.84" style="stroke-width: 0.75;"></line>
+    <line x1="69.33" y1="9.96" x2="69.33" y2="6.84" style="stroke-width: 0.75;"></line>
+    <polygon points="42.67,11.51 42.67,5.29 62.67,5.29 62.67,11.51 " style="stroke-width: 0.75; stroke: none;"></polygon>
+  </g>
+</svg>
+</td></tr>
+    <tr><td class="gt_row gt_left"><div style="line-height:14px"><span style="font-weight:bold;font-variant:small-caps;color:#38160D;font-size:14px">Pralus</span></div>
+<div style="line-height:10px"><span style="font-weight:bold;color:#BEBEBE;font-size:10px">France</span></div></td>
+<td class="gt_row gt_right">25</td>
+<td class="gt_row gt_left"><!--?xml version='1.0' encoding='UTF-8' ?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="85.04pt" height="14.17pt" viewbox="0 0 85.04 14.17"><defs>  <style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs>  <clippath id="cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3">    <rect x="0.00" y="0.00" width="85.04" height="14.17"></rect>  </clippath></defs><g clip-path="url(#cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3)"><rect x="3.76" y="1.77" width="32.94" height="10.63" style="stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #82A6B1;"></rect><line x1="3.76" y1="14.17" x2="3.76" y2="0.0000000000000018" style="stroke-width: 2.13; stroke-linecap: butt;"></line></g></svg></td>
+<td class="gt_row gt_right" style="background-color: #A0877E; color: #000000;">3.18</td>
+<td class="gt_row gt_center"><!--?xml version='1.0' encoding='UTF-8' ?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="85.04pt" height="14.17pt" viewbox="0 0 85.04 14.17"><defs>  <style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs>  <clippath id="cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3">    <rect x="0.00" y="0.00" width="85.04" height="14.17"></rect>  </clippath></defs><g clip-path="url(#cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3)"><rect x="22.08" y="10.95" width="5.84" height="2.58" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="27.92" y="13.53" width="5.84" height="0.00" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="33.76" y="13.53" width="5.84" height="0.00" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="39.60" y="13.53" width="5.84" height="0.00" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="45.44" y="0.64" width="5.84" height="12.88" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="51.28" y="8.38" width="5.84" height="5.15" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="57.12" y="5.80" width="5.84" height="7.73" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="62.96" y="10.95" width="5.84" height="2.58" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="68.80" y="12.24" width="5.84" height="1.29" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect></g></svg></td>
+<td class="gt_row gt_right">2.00</td>
+<td class="gt_row gt_center">3.25</td>
+<td class="gt_row gt_right">4.00</td>
+<td class="gt_row gt_right" style="background-color: #6D4C41; color: #FFFFFF;">2.00</td>
+<td class="gt_row gt_center"><!--?xml version="1.0" encoding="UTF-8"?-->
+<svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="72.00pt" height="16.80pt" viewbox="0 0 72.00 16.80">
+  <defs>
+    <style type="text/css">
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+  </style>
+  </defs>
+  <rect width="100%" height="100%" style="stroke: none; fill: none;"></rect>
+  <defs>
+    <clippath id="cpMC4wMHw3Mi4wMHwwLjAwfDE2Ljgw">
+      <rect x="0.00" y="0.00" width="72.00" height="16.80"></rect>
+    </clippath>
+  </defs>
+  <g clip-path="url(#cpMC4wMHw3Mi4wMHwwLjAwfDE2Ljgw)">
+    <polygon points="42.67,11.51 42.67,5.29 56.00,5.29 56.00,11.51 " style="stroke-width: 0.75; stroke: none; fill: #D3D3D3;"></polygon>
+    <line x1="49.33" y1="11.51" x2="49.33" y2="5.29" style="stroke-width: 0.75; stroke: #FF0000; stroke-linecap: butt;"></line>
+    <line x1="42.67" y1="8.40" x2="42.67" y2="8.40" style="stroke-width: 0.75;"></line>
+    <line x1="69.33" y1="8.40" x2="56.00" y2="8.40" style="stroke-width: 0.75;"></line>
+    <line x1="42.67" y1="9.96" x2="42.67" y2="6.84" style="stroke-width: 0.75;"></line>
+    <line x1="69.33" y1="9.96" x2="69.33" y2="6.84" style="stroke-width: 0.75;"></line>
+    <polygon points="42.67,11.51 42.67,5.29 56.00,5.29 56.00,11.51 " style="stroke-width: 0.75; stroke: none;"></polygon>
+    <circle cx="16.00" cy="8.40" r="0.54" style="stroke-width: 0.75;"></circle>
+    <circle cx="16.00" cy="8.40" r="0.54" style="stroke-width: 0.75;"></circle>
+  </g>
+</svg>
+</td></tr>
+    <tr><td class="gt_row gt_left"><div style="line-height:14px"><span style="font-weight:bold;font-variant:small-caps;color:#38160D;font-size:14px">Guittard</span></div>
+<div style="line-height:10px"><span style="font-weight:bold;color:#BEBEBE;font-size:10px">U.S.A.</span></div></td>
+<td class="gt_row gt_right">22</td>
+<td class="gt_row gt_left"><!--?xml version='1.0' encoding='UTF-8' ?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="85.04pt" height="14.17pt" viewbox="0 0 85.04 14.17"><defs>  <style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs>  <clippath id="cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3">    <rect x="0.00" y="0.00" width="85.04" height="14.17"></rect>  </clippath></defs><g clip-path="url(#cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3)"><rect x="3.76" y="1.77" width="28.99" height="10.63" style="stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #82A6B1;"></rect><line x1="3.76" y1="14.17" x2="3.76" y2="0.0000000000000018" style="stroke-width: 2.13; stroke-linecap: butt;"></line></g></svg></td>
+<td class="gt_row gt_right" style="background-color: #A48B83; color: #000000;">3.17</td>
+<td class="gt_row gt_center"><!--?xml version='1.0' encoding='UTF-8' ?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="85.04pt" height="14.17pt" viewbox="0 0 85.04 14.17"><defs>  <style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs>  <clippath id="cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3">    <rect x="0.00" y="0.00" width="85.04" height="14.17"></rect>  </clippath></defs><g clip-path="url(#cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3)"><rect x="33.76" y="11.69" width="5.84" height="1.84" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="39.60" y="8.01" width="5.84" height="5.52" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="45.44" y="0.64" width="5.84" height="12.88" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="51.28" y="8.01" width="5.84" height="5.52" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="57.12" y="0.64" width="5.84" height="12.88" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="62.96" y="11.69" width="5.84" height="1.84" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect></g></svg></td>
+<td class="gt_row gt_right">2.50</td>
+<td class="gt_row gt_center">3.12</td>
+<td class="gt_row gt_right">3.75</td>
+<td class="gt_row gt_right" style="background-color: #C9BBB6; color: #000000;">1.25</td>
+<td class="gt_row gt_center"><!--?xml version="1.0" encoding="UTF-8"?-->
+<svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="72.00pt" height="16.80pt" viewbox="0 0 72.00 16.80">
+  <defs>
+    <style type="text/css">
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+  </style>
+  </defs>
+  <rect width="100%" height="100%" style="stroke: none; fill: none;"></rect>
+  <defs>
+    <clippath id="cpMC4wMHw3Mi4wMHwwLjAwfDE2Ljgw">
+      <rect x="0.00" y="0.00" width="72.00" height="16.80"></rect>
+    </clippath>
+  </defs>
+  <g clip-path="url(#cpMC4wMHw3Mi4wMHwwLjAwfDE2Ljgw)">
+    <polygon points="42.67,11.51 42.67,5.29 56.00,5.29 56.00,11.51 " style="stroke-width: 0.75; stroke: none; fill: #D3D3D3;"></polygon>
+    <line x1="46.00" y1="11.51" x2="46.00" y2="5.29" style="stroke-width: 0.75; stroke: #FF0000; stroke-linecap: butt;"></line>
+    <line x1="29.33" y1="8.40" x2="42.67" y2="8.40" style="stroke-width: 0.75;"></line>
+    <line x1="62.67" y1="8.40" x2="56.00" y2="8.40" style="stroke-width: 0.75;"></line>
+    <line x1="29.33" y1="9.96" x2="29.33" y2="6.84" style="stroke-width: 0.75;"></line>
+    <line x1="62.67" y1="9.96" x2="62.67" y2="6.84" style="stroke-width: 0.75;"></line>
+    <polygon points="42.67,11.51 42.67,5.29 56.00,5.29 56.00,11.51 " style="stroke-width: 0.75; stroke: none;"></polygon>
+  </g>
+</svg>
+</td></tr>
+    <tr><td class="gt_row gt_left"><div style="line-height:14px"><span style="font-weight:bold;font-variant:small-caps;color:#38160D;font-size:14px">Coppeneur</span></div>
+<div style="line-height:10px"><span style="font-weight:bold;color:#BEBEBE;font-size:10px">Germany</span></div></td>
+<td class="gt_row gt_right">19</td>
+<td class="gt_row gt_left"><!--?xml version='1.0' encoding='UTF-8' ?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="85.04pt" height="14.17pt" viewbox="0 0 85.04 14.17"><defs>  <style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs>  <clippath id="cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3">    <rect x="0.00" y="0.00" width="85.04" height="14.17"></rect>  </clippath></defs><g clip-path="url(#cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3)"><rect x="3.76" y="1.77" width="25.03" height="10.63" style="stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #82A6B1;"></rect><line x1="3.76" y1="14.17" x2="3.76" y2="0.0000000000000018" style="stroke-width: 2.13; stroke-linecap: butt;"></line></g></svg></td>
+<td class="gt_row gt_right" style="background-color: #A89088; color: #000000;">3.16</td>
+<td class="gt_row gt_center"><!--?xml version='1.0' encoding='UTF-8' ?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="85.04pt" height="14.17pt" viewbox="0 0 85.04 14.17"><defs>  <style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs>  <clippath id="cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3">    <rect x="0.00" y="0.00" width="85.04" height="14.17"></rect>  </clippath></defs><g clip-path="url(#cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3)"><rect x="10.40" y="11.38" width="5.84" height="2.15" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="16.24" y="13.53" width="5.84" height="0.00" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="22.08" y="13.53" width="5.84" height="0.00" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="27.92" y="13.53" width="5.84" height="0.00" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="33.76" y="11.38" width="5.84" height="2.15" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="39.60" y="13.53" width="5.84" height="0.00" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="45.44" y="0.64" width="5.84" height="12.88" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="51.28" y="2.79" width="5.84" height="10.74" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="57.12" y="7.09" width="5.84" height="6.44" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="62.96" y="7.09" width="5.84" height="6.44" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect></g></svg></td>
+<td class="gt_row gt_right">1.50</td>
+<td class="gt_row gt_center">3.25</td>
+<td class="gt_row gt_right">3.75</td>
+<td class="gt_row gt_right" style="background-color: #553A32; color: #FFFFFF;">2.25</td>
+<td class="gt_row gt_center"><!--?xml version="1.0" encoding="UTF-8"?-->
+<svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="72.00pt" height="16.80pt" viewbox="0 0 72.00 16.80">
+  <defs>
+    <style type="text/css">
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+  </style>
+  </defs>
+  <rect width="100%" height="100%" style="stroke: none; fill: none;"></rect>
+  <defs>
+    <clippath id="cpMC4wMHw3Mi4wMHwwLjAwfDE2Ljgw">
+      <rect x="0.00" y="0.00" width="72.00" height="16.80"></rect>
+    </clippath>
+  </defs>
+  <g clip-path="url(#cpMC4wMHw3Mi4wMHwwLjAwfDE2Ljgw)">
+    <polygon points="42.67,11.51 42.67,5.29 56.00,5.29 56.00,11.51 " style="stroke-width: 0.75; stroke: none; fill: #D3D3D3;"></polygon>
+    <line x1="49.33" y1="11.51" x2="49.33" y2="5.29" style="stroke-width: 0.75; stroke: #FF0000; stroke-linecap: butt;"></line>
+    <line x1="29.33" y1="8.40" x2="42.67" y2="8.40" style="stroke-width: 0.75;"></line>
+    <line x1="62.67" y1="8.40" x2="56.00" y2="8.40" style="stroke-width: 0.75;"></line>
+    <line x1="29.33" y1="9.96" x2="29.33" y2="6.84" style="stroke-width: 0.75;"></line>
+    <line x1="62.67" y1="9.96" x2="62.67" y2="6.84" style="stroke-width: 0.75;"></line>
+    <polygon points="42.67,11.51 42.67,5.29 56.00,5.29 56.00,11.51 " style="stroke-width: 0.75; stroke: none;"></polygon>
+    <circle cx="2.67" cy="8.40" r="0.54" style="stroke-width: 0.75;"></circle>
+  </g>
+</svg>
+</td></tr>
+    <tr><td class="gt_row gt_left"><div style="line-height:14px"><span style="font-weight:bold;font-variant:small-caps;color:#38160D;font-size:14px">Mast Brothers</span></div>
+<div style="line-height:10px"><span style="font-weight:bold;color:#BEBEBE;font-size:10px">U.S.A.</span></div></td>
+<td class="gt_row gt_right">18</td>
+<td class="gt_row gt_left"><!--?xml version='1.0' encoding='UTF-8' ?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="85.04pt" height="14.17pt" viewbox="0 0 85.04 14.17"><defs>  <style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs>  <clippath id="cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3">    <rect x="0.00" y="0.00" width="85.04" height="14.17"></rect>  </clippath></defs><g clip-path="url(#cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3)"><rect x="3.76" y="1.77" width="23.72" height="10.63" style="stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #82A6B1;"></rect><line x1="3.76" y1="14.17" x2="3.76" y2="0.0000000000000018" style="stroke-width: 2.13; stroke-linecap: butt;"></line></g></svg></td>
+<td class="gt_row gt_right" style="background-color: #B7A49D; color: #000000;">3.12</td>
+<td class="gt_row gt_center"><!--?xml version='1.0' encoding='UTF-8' ?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="85.04pt" height="14.17pt" viewbox="0 0 85.04 14.17"><defs>  <style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs>  <clippath id="cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3">    <rect x="0.00" y="0.00" width="85.04" height="14.17"></rect>  </clippath></defs><g clip-path="url(#cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3)"><rect x="33.76" y="10.95" width="5.84" height="2.58" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="39.60" y="3.22" width="5.84" height="10.31" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="45.44" y="0.64" width="5.84" height="12.88" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="51.28" y="5.80" width="5.84" height="7.73" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="57.12" y="5.80" width="5.84" height="7.73" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="62.96" y="8.38" width="5.84" height="5.15" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect></g></svg></td>
+<td class="gt_row gt_right">2.50</td>
+<td class="gt_row gt_center">3.00</td>
+<td class="gt_row gt_right">3.75</td>
+<td class="gt_row gt_right" style="background-color: #C9BBB6; color: #000000;">1.25</td>
+<td class="gt_row gt_center"><!--?xml version="1.0" encoding="UTF-8"?-->
+<svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="72.00pt" height="16.80pt" viewbox="0 0 72.00 16.80">
+  <defs>
+    <style type="text/css">
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+  </style>
+  </defs>
+  <rect width="100%" height="100%" style="stroke: none; fill: none;"></rect>
+  <defs>
+    <clippath id="cpMC4wMHw3Mi4wMHwwLjAwfDE2Ljgw">
+      <rect x="0.00" y="0.00" width="72.00" height="16.80"></rect>
+    </clippath>
+  </defs>
+  <g clip-path="url(#cpMC4wMHw3Mi4wMHwwLjAwfDE2Ljgw)">
+    <polygon points="36.00,11.51 36.00,5.29 56.00,5.29 56.00,11.51 " style="stroke-width: 0.75; stroke: none; fill: #D3D3D3;"></polygon>
+    <line x1="42.67" y1="11.51" x2="42.67" y2="5.29" style="stroke-width: 0.75; stroke: #FF0000; stroke-linecap: butt;"></line>
+    <line x1="29.33" y1="8.40" x2="36.00" y2="8.40" style="stroke-width: 0.75;"></line>
+    <line x1="62.67" y1="8.40" x2="56.00" y2="8.40" style="stroke-width: 0.75;"></line>
+    <line x1="29.33" y1="9.96" x2="29.33" y2="6.84" style="stroke-width: 0.75;"></line>
+    <line x1="62.67" y1="9.96" x2="62.67" y2="6.84" style="stroke-width: 0.75;"></line>
+    <polygon points="36.00,11.51 36.00,5.29 56.00,5.29 56.00,11.51 " style="stroke-width: 0.75; stroke: none;"></polygon>
+  </g>
+</svg>
+</td></tr>
+    <tr><td class="gt_row gt_left"><div style="line-height:14px"><span style="font-weight:bold;font-variant:small-caps;color:#38160D;font-size:14px">Artisan du Chocolat</span></div>
+<div style="line-height:10px"><span style="font-weight:bold;color:#BEBEBE;font-size:10px">U.K.</span></div></td>
+<td class="gt_row gt_right">16</td>
+<td class="gt_row gt_left"><!--?xml version='1.0' encoding='UTF-8' ?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="85.04pt" height="14.17pt" viewbox="0 0 85.04 14.17"><defs>  <style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs>  <clippath id="cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3">    <rect x="0.00" y="0.00" width="85.04" height="14.17"></rect>  </clippath></defs><g clip-path="url(#cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3)"><rect x="3.76" y="1.77" width="21.08" height="10.63" style="stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #82A6B1;"></rect><line x1="3.76" y1="14.17" x2="3.76" y2="0.0000000000000018" style="stroke-width: 2.13; stroke-linecap: butt;"></line></g></svg></td>
+<td class="gt_row gt_right" style="background-color: #C7B8B2; color: #000000;">3.08</td>
+<td class="gt_row gt_center"><!--?xml version='1.0' encoding='UTF-8' ?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="85.04pt" height="14.17pt" viewbox="0 0 85.04 14.17"><defs>  <style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs>  <clippath id="cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3">    <rect x="0.00" y="0.00" width="85.04" height="14.17"></rect>  </clippath></defs><g clip-path="url(#cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3)"><rect x="16.24" y="7.09" width="5.84" height="6.44" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="22.08" y="13.53" width="5.84" height="0.00" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="27.92" y="13.53" width="5.84" height="0.00" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="33.76" y="10.31" width="5.84" height="3.22" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="39.60" y="7.09" width="5.84" height="6.44" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="45.44" y="7.09" width="5.84" height="6.44" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="51.28" y="0.64" width="5.84" height="12.88" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="57.12" y="10.31" width="5.84" height="3.22" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="62.96" y="3.87" width="5.84" height="9.66" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="68.80" y="10.31" width="5.84" height="3.22" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect></g></svg></td>
+<td class="gt_row gt_right">1.75</td>
+<td class="gt_row gt_center">3.25</td>
+<td class="gt_row gt_right">4.00</td>
+<td class="gt_row gt_right" style="background-color: #553A32; color: #FFFFFF;">2.25</td>
+<td class="gt_row gt_center"><!--?xml version="1.0" encoding="UTF-8"?-->
+<svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="72.00pt" height="16.80pt" viewbox="0 0 72.00 16.80">
+  <defs>
+    <style type="text/css">
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+  </style>
+  </defs>
+  <rect width="100%" height="100%" style="stroke: none; fill: none;"></rect>
+  <defs>
+    <clippath id="cpMC4wMHw3Mi4wMHwwLjAwfDE2Ljgw">
+      <rect x="0.00" y="0.00" width="72.00" height="16.80"></rect>
+    </clippath>
+  </defs>
+  <g clip-path="url(#cpMC4wMHw3Mi4wMHwwLjAwfDE2Ljgw)">
+    <polygon points="36.00,11.51 36.00,5.29 59.33,5.29 59.33,11.51 " style="stroke-width: 0.75; stroke: none; fill: #D3D3D3;"></polygon>
+    <line x1="49.33" y1="11.51" x2="49.33" y2="5.29" style="stroke-width: 0.75; stroke: #FF0000; stroke-linecap: butt;"></line>
+    <line x1="9.33" y1="8.40" x2="36.00" y2="8.40" style="stroke-width: 0.75;"></line>
+    <line x1="69.33" y1="8.40" x2="59.33" y2="8.40" style="stroke-width: 0.75;"></line>
+    <line x1="9.33" y1="9.96" x2="9.33" y2="6.84" style="stroke-width: 0.75;"></line>
+    <line x1="69.33" y1="9.96" x2="69.33" y2="6.84" style="stroke-width: 0.75;"></line>
+    <polygon points="36.00,11.51 36.00,5.29 59.33,5.29 59.33,11.51 " style="stroke-width: 0.75; stroke: none;"></polygon>
+  </g>
+</svg>
+</td></tr>
+    <tr><td class="gt_row gt_left"><div style="line-height:14px"><span style="font-weight:bold;font-variant:small-caps;color:#38160D;font-size:14px">Hotel Chocolat (Coppeneur)</span></div>
+<div style="line-height:10px"><span style="font-weight:bold;color:#BEBEBE;font-size:10px">U.K.</span></div></td>
+<td class="gt_row gt_right">19</td>
+<td class="gt_row gt_left"><!--?xml version='1.0' encoding='UTF-8' ?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="85.04pt" height="14.17pt" viewbox="0 0 85.04 14.17"><defs>  <style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs>  <clippath id="cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3">    <rect x="0.00" y="0.00" width="85.04" height="14.17"></rect>  </clippath></defs><g clip-path="url(#cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3)"><rect x="3.76" y="1.77" width="25.03" height="10.63" style="stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #82A6B1;"></rect><line x1="3.76" y1="14.17" x2="3.76" y2="0.0000000000000018" style="stroke-width: 2.13; stroke-linecap: butt;"></line></g></svg></td>
+<td class="gt_row gt_right" style="background-color: #EFEBE9; color: #000000;">2.97</td>
+<td class="gt_row gt_center"><!--?xml version='1.0' encoding='UTF-8' ?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="85.04pt" height="14.17pt" viewbox="0 0 85.04 14.17"><defs>  <style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs>  <clippath id="cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3">    <rect x="0.00" y="0.00" width="85.04" height="14.17"></rect>  </clippath></defs><g clip-path="url(#cpMC4wMHw4NS4wNHwwLjAwfDE0LjE3)"><rect x="33.76" y="10.31" width="5.84" height="3.22" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="39.60" y="5.48" width="5.84" height="8.05" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="45.44" y="0.64" width="5.84" height="12.88" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="51.28" y="11.92" width="5.84" height="1.61" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect><rect x="57.12" y="8.70" width="5.84" height="4.83" style="stroke-width: 0.43; stroke: #66462C; stroke-linecap: square; stroke-linejoin: miter; fill: #66462C;"></rect></g></svg></td>
+<td class="gt_row gt_right">2.50</td>
+<td class="gt_row gt_center">3.00</td>
+<td class="gt_row gt_right">3.50</td>
+<td class="gt_row gt_right" style="background-color: #EFEBE9; color: #000000;">1.00</td>
+<td class="gt_row gt_center"><!--?xml version="1.0" encoding="UTF-8"?-->
+<svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="72.00pt" height="16.80pt" viewbox="0 0 72.00 16.80">
+  <defs>
+    <style type="text/css">
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+  </style>
+  </defs>
+  <rect width="100%" height="100%" style="stroke: none; fill: none;"></rect>
+  <defs>
+    <clippath id="cpMC4wMHw3Mi4wMHwwLjAwfDE2Ljgw">
+      <rect x="0.00" y="0.00" width="72.00" height="16.80"></rect>
+    </clippath>
+  </defs>
+  <g clip-path="url(#cpMC4wMHw3Mi4wMHwwLjAwfDE2Ljgw)">
+    <polygon points="36.00,11.51 36.00,5.29 42.67,5.29 42.67,11.51 " style="stroke-width: 0.75; stroke: none; fill: #D3D3D3;"></polygon>
+    <line x1="42.67" y1="11.51" x2="42.67" y2="5.29" style="stroke-width: 0.75; stroke: #FF0000; stroke-linecap: butt;"></line>
+    <line x1="29.33" y1="8.40" x2="36.00" y2="8.40" style="stroke-width: 0.75;"></line>
+    <line x1="49.33" y1="8.40" x2="42.67" y2="8.40" style="stroke-width: 0.75;"></line>
+    <line x1="29.33" y1="9.96" x2="29.33" y2="6.84" style="stroke-width: 0.75;"></line>
+    <line x1="49.33" y1="9.96" x2="49.33" y2="6.84" style="stroke-width: 0.75;"></line>
+    <polygon points="36.00,11.51 36.00,5.29 42.67,5.29 42.67,11.51 " style="stroke-width: 0.75; stroke: none;"></polygon>
+    <circle cx="56.00" cy="8.40" r="0.54" style="stroke-width: 0.75;"></circle>
+    <circle cx="56.00" cy="8.40" r="0.54" style="stroke-width: 0.75;"></circle>
+    <circle cx="56.00" cy="8.40" r="0.54" style="stroke-width: 0.75;"></circle>
+  </g>
+</svg>
+</td></tr>
+  </tbody>
+  <tfoot class="gt_sourcenotes">
+    <tr>
+      <td class="gt_sourcenote" colspan="10"><br>#TidyTuesday Week 3  |  Data source: Flavors of Cacao, by way of Georgios and Kelsey  |  Inline boxplot function from Thomas Mock</td>
+    </tr>
+  </tfoot>
+  
+</table>
+</div>
+</div>
+</div>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

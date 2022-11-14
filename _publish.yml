@@ -1,0 +1,12 @@
+- source: NYT_best_sellers.qmd
+  quarto-pub:
+    - id: e330e828-6d30-448c-b55f-7ffe245c4a2c
+      url: 'https://quartopub.com/sites/leeolney3/nytimes-best-sellers'
+    - id: 3772ea90-8f2e-4759-8697-e5450c21d19c
+      url: 'https://quartopub.com/sites/leeolney3/nytimes-best-sellers'
+- source: Chocolate_bar_ratings.qmd
+  quarto-pub:
+    - id: f8ca2208-f263-4eb4-a93e-e94801797798
+      url: 'https://quartopub.com/sites/leeolney3/chocolate-bar-ratings'
+    - id: b8df77c9-0cb5-4b61-9595-18223474636c
+      url: 'https://quartopub.com/sites/leeolney3/chocolate-bar-ratings'
