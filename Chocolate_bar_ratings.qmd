@@ -109,8 +109,8 @@ df2 %>%
              n2=html("N reviewed")) %>%
   tab_spanner(label="Rating", 
               columns=c(average:boxplot)) %>%
-  tab_header(title=md("<span style='color:#411d13'>Ratings of Plain Dark Chocolate Bar</span>"),
-             subtitle=md("Summary table of ratings (between 1 to 5) by 22 manufacturers with more than 15 reviews, according to *Flavors of Cacao*.")) %>%
+  tab_header(title=md("<span style='color:#411d13'>Ratings of Plain Dark Chocolate Bars</span>"),
+             subtitle=md("Summary table of ratings (between 1 to 5) of by 22 manufacturers with more than 15 reviews, according to *Flavors of Cacao*.")) %>%
   tab_source_note(source_note = gt::html("<br>#TidyTuesday Week 3  |  Data source: Flavors of Cacao, by way of Georgios and Kelsey  |  Inline boxplot function from Thomas Mock")) %>%
   # Adjust sub-title font
   tab_style(
